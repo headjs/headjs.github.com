@@ -11,13 +11,12 @@
 	<meta name="author" content="tipiirai (Tero Piirainen)">	
 	
 		
-
-	<!-- headjs :: possibly the most important script after jQuery -->	
 	<script src="media/js/head.min.js"></script>
 	
 	<!-- include the stylesheet after headjs -->
-	<link rel="stylesheet" href="media/css/style.css?v=1">
-		
+	<link rel="stylesheet" href="media/css/style.css?v=2"> 
+	<link rel="icon" type="image/gif" href="media/img/favicon.gif?v=1">
+	
 		
 		
 </head>
@@ -51,7 +50,7 @@
    <h3>A 2.30 kb script that speeds up, simplifies and modernizes your site</h3>
 
 	<p>
-		The HEAD section is the worst place to load scripts. It's painfully slow. The more and the bigger the worse it gets. Move scrips to the bottom and you run into dependency issues and you cannot <em>safely</em> use HTML5 and CSS3. Enter Head JS. A single best solution to these universal problems. <a href="#theory">more theory &raquo;</a>
+		The HEAD section is the worst place to load scripts. It's painfully slow. The more and the bigger the worse it gets. Move scrips to the bottom and you run into dependency issues and you cannot <em>safely</em> use HTML5 and CSS3. Enter Head JS. A compact solution to these universal issues. <a href="#theory">more theory &raquo;</a>
 	</p>
    
 </div>
@@ -96,8 +95,8 @@
 
 
 <h2>Screen size detector</h2>
-<p>Design stunning looks for <strong>1980px</strong> screen and make it also work on <strong>10"</strong> laptops and mobile phones. 
-   Screen size is the single most important thing when developing mobile sites.
+<p>Design pages for <strong>1980px</strong> wide screen and make it also work on <strong>10"</strong> laptops and mobile phones. 
+   Viewport size is the single most important thing when developing mobile sites.
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* screen size less than 1024 pixels */</span><br /><span class="nc">.lt-1024</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="k">medium</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/* fine tune for mobile phone */</span><br /><span class="nc">.lt-640</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="n">small</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /></pre></div><br /></div>
 
@@ -232,7 +231,7 @@
 <h2>Labeling scripts</h2>
 <p>By assigning labels the content developers need not to know the actual file paths.
 </p>
-<div class="code"><div class="highlight"><pre><span class="c">// call a function immediately after jQuery Tools is loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;tools&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br />   <span class="c">// setup Tooltips</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tip&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load scripts by assigning a label for them</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><br />   <span class="p">{</span><span class="nx">jquery</span><span class="o">:</span> <span class="s2">&quot;http://http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">tools</span><span class="o">:</span>  <span class="s2">&quot;http://cnd.jquerytools.org/1.2.5/tiny/jquery.tools.min&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">heavy</span><span class="o">:</span>   <span class="s2">&quot;http://a.heavy.library/we/dont/want/to/wait/for.js&quot;</span><span class="p">}</span><span class="o">,</span><br />&nbsp;<br />   <span class="c">// label is not required for all files	</span><br />   <span class="s2">&quot;http://can.be.mixed/with/unlabeled/files.js&quot;</span><br /><span class="p">);</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="c">// call a function immediately after jQuery Tools is loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="s2">&quot;tools&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br />   <span class="c">// setup Tooltips</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tip&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load scripts by assigning a label for them</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><br />   <span class="p">{</span><span class="nx">jquery</span><span class="o">:</span> <span class="s2">&quot;http://http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">tools</span><span class="o">:</span>  <span class="s2">&quot;http://cnd.jquerytools.org/1.2.5/tiny/jquery.tools.min&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">heavy</span><span class="o">:</span>   <span class="s2">&quot;http://a.heavy.library/we/dont/want/to/wait/for.js&quot;</span><span class="p">}</span><span class="o">,</span><br />&nbsp;<br />   <span class="c">// label is not required for all files	</span><br />   <span class="s2">&quot;http://can.be.mixed/with/unlabeled/files.js&quot;</span><br /><span class="p">);</span><br /></pre></div><br /></div>
 
 
 <h2>CSS3 feature detection</h2>
