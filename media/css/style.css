@@ -240,7 +240,7 @@ body {
 #hero p {
 	color:#fff;
 	font-size:11px;
-	margin:50px;
+	margin:55px 35px;
 	text-align:center;
 }
 
@@ -248,12 +248,12 @@ body {
 	color:#777;		
 }
 
-nav {
+nav, footer {
 	margin:5px 0;	
 	text-align:center;	
 }
 
-nav a {
+nav a, footer a {
 	color:#777;
 	font-size:11px;
 	margin:0 5px;
@@ -286,8 +286,9 @@ section {
 
 #content h3 {
 	font-size:13px;
-	margin:15px 0 -5px 0;
-	color:#666;	
+	font-weight:bold;
+	color:#555;
+	
 }
 
 #content section :first-child { 
@@ -298,7 +299,7 @@ section {
 	background-color:#f9f9f9;
 	border:1px dotted #ddd;
 	padding:10px;
-	.rounded;
+	margin-bottom:-20px;
 }
 
 a {
@@ -310,7 +311,11 @@ a:hover {
 }
 
 li code, li a {
-	float:left;
-	width:100px;	
+	font-weight:bold;
+}
+
+#api h3, code {
+	color:#458;
+	font-family:"andale mono",monospace;	
 }
 

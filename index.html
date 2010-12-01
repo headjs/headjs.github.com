@@ -7,15 +7,16 @@
 
 	<title>Head JS :: The only script in your HEAD</title>
 	<meta name="description" content="The HEAD section is absolutely the worst place to load and execute scripts. The more and the bigger the worse it gets. Stop that. Head JS is all you need.">
-	<meta name="keywords" content="labjs, modernizr, parallel script load, javascript loader, non-blocking javascript">	
+	<meta name="keywords" content="labjs, modernizr, parallel script loading, javascript loader, non-blocking javascript, javascript modernizer">	
 	<meta name="author" content="tipiirai (Tero Piirainen)">	
 	
-	<link rel="icon" type="image/png" href="media/img/favicon.png"> 
-	<link rel="stylesheet" href="media/css/style.css">
-
+		
 
 	<!-- headjs :: possibly the most important script after jQuery -->	
-	<script src="media/headjs/head.min.js"></script>
+	<script src="media/js/head.min.js"></script>
+	
+	<!-- include the stylesheet after headjs -->
+	<link rel="stylesheet" href="media/css/style.css?v=1">
 		
 		
 		
@@ -27,7 +28,7 @@
 	
 	<a href="http://github.com/headjs/headjs">
 		<img id="fork" alt="Fork me on GitHub" 
-			src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
+			src="media/img/forkme.png">
 	</a>
 
 	<div id="wrap">			
@@ -47,10 +48,10 @@
    
    <h2>The only script in your &lt;HEAD&gt;</h2>
    
-   <h3>A 1.95 kb script that speeds up, simplifies and modernizes your site</h3>
+   <h3>A 2.30 kb script that speeds up, simplifies and modernizes your site</h3>
 
 	<p>
-		The HEAD section is the worst place to load scripts. It's painfully slow. The more and the bigger the worse it gets. Move the scrips to the bottom of the page and you cannot use HTML5 and CSS3 safely. Enter Head JS. The single best solution to this universal problem. <a href="#theory">more theory &raquo;</a>
+		The HEAD section is the worst place to load scripts. It's painfully slow. The more and the bigger the worse it gets. Move the scrips to the end of the page and you cannot use HTML5 and CSS3 safely or you run into dependency problems. Enter Head JS. The single best solution to this universal problem. <a href="#theory">more theory &raquo;</a>
 	</p>
    
 </div>
@@ -73,9 +74,9 @@
 </p>
 
 <h2>JavaScript organizer</h2>
-<p>You've read the books and placed SCRIPT SRC tags on the bottom of the page. Rather nice. But can you do this?
+<p>You've read the books and placed SCRIPT SRC tags on the bottom. Good. But can you do this?
 </p>
-<div class="code"><div class="highlight"><pre><span class="c">// use jQuery on the body of the page even though it is not included yet</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#my&quot;</span><span class="p">).</span><span class="nx">jquery_plugin</span><span class="p">();</span><br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load jQuery on bottom of the page</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/jquery.js&quot;</span><span class="p">);</span>  <br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="c">// use jQuery on the body of the page even though it is not included yet</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#my&quot;</span><span class="p">).</span><span class="nx">jquery_plugin</span><span class="p">();</span><br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load jQuery on bottom of the page</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/jquery.js&quot;</span><span class="p">);</span>  <br /></pre></div><br /></div>
 
 <p>A typical problem in templating systems or in pages with separate header/footer files. 
 </p>
@@ -85,7 +86,7 @@
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* target CSS for browsers without box-shadow support */</span><br /><span class="nc">.no-boxshadow</span> <span class="nc">.box</span> <span class="p">{</span><br />   <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="k">solid</span> <span class="m">#ddd</span><span class="p">;</span><br /><span class="p">}</span><br /></pre></div><br /></div>
 
-<p>HeadJS focuses on <em>CSS3 styling</em> properties and you can add more tests if you want. Minimalism is a must. It's your HEAD again. 
+<p>The focus is on <em>CSS3 styling</em> and it's easy to add more tests. Minimalism is a must. It's your HEAD again. 
 </p>
 
 <h2>HTML5 enabler</h2>
@@ -95,20 +96,21 @@
 
 
 <h2>Screen size detector</h2>
-<p>Design stunning looks for 1980px wide screen and make it also work on 10" laptops and mobile phones. Screen size is the single most important thing when developing mobile sites.
+<p>Design stunning looks for <strong>1980px</strong> screen and make it also work on <strong>10"</strong> laptops and mobile phones. 
+   Screen size is the single most important thing when developing mobile sites.
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* screen size less than 1024 pixels */</span><br /><span class="nc">.lt-1024</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="k">medium</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/* fine tune for mobile phone */</span><br /><span class="nc">.lt-640</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="n">small</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /></pre></div><br /></div>
 
-<p>Note that if you resize the browser window your CSS rules will be dynamically applied. Delivered to you by HeadJS.
+<p>If you resize the browser window your CSS rules will dynamically follow. Head JS does it behind the scenes.
 </p>
 
 <h2>Dynamic CSS</h2>
 <p>Style for various application states
 </p>
-<div class="code"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span><br /><span class="c">/* test if user is logged in by cheking out an existence of a cookie */</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">feature</span><span class="p">(</span><span class="s2">&quot;logged&quot;</span><span class="o">,</span> <span class="nx">head</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s2">&quot;auth_token&quot;</span><span class="p">));</span><br /><span class="nt">&lt;/script&gt;</span><br />&nbsp;<br /><span class="nt">&lt;style&gt;</span><br /><span class="c">/* .. and write CSS accordingly */</span><br /><span class="nc">.logged</span> <span class="nf">#login-box</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><br /><span class="nt">&lt;/style&gt;</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span><br /><span class="c">/* test if user is logged in by cheking out an existence of a cookie */</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">feature</span><span class="p">(</span><span class="s2">&quot;logged&quot;</span><span class="o">,</span> <span class="nx">get_cookie</span><span class="p">(</span><span class="s2">&quot;auth_token&quot;</span><span class="p">));</span><br /><span class="nt">&lt;/script&gt;</span><br />&nbsp;<br /><span class="nt">&lt;style&gt;</span><br /><span class="c">/* .. and write CSS accordingly */</span><br /><span class="nc">.logged</span> <span class="nf">#login-box</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><br /><span class="nt">&lt;/style&gt;</span><br /></pre></div><br /></div>
 
 <p>
-	Whenever you call `head.feature()` the CSS will dynamically reflect the chanegs. The `feature()` method needs to be called inside youre HEAD before the stylesheets are applied
+	Whenever you call `head.feature()` your CSS rules will follow. 
 </p>
 
 
@@ -123,11 +125,11 @@
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* older than IE9 */</span><br /><span class="nc">.lt-ie9</span> <span class="nc">.box</span> <span class="p">{</span> <span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/* CSS fixes for IE6 */</span><br /><span class="nc">.ie6</span> <span class="nt">ul</span>  <span class="p">{</span> <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><br /></pre></div><br /></div>
 
-<p>It's generally wiser to use feature detection but we all know IE: it's a feature itself.
+<p>It's generally wiser to use feature detection but we all know IE: it's a feature in itself.
 </p>
 
 <h2>JavaScript feature detection</h2>
-<p>Every feature is also contained on the <code>headjs</code> global variable.
+<p>Every feature can be found on a <code>headjs</code> global JavaScript variable.
 </p>
 <div class="code"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">headjs</span><span class="p">.</span><span class="nx">logged</span><span class="p">)</span> <span class="p">{</span><br />   <span class="c">// do things</span><br /><span class="p">}</span><br /></pre></div><br /></div>
 
@@ -156,15 +158,15 @@
 </p>
 
 <h3>1. HTML5 and CSS3 cannot be used</h3>
-<p>If you are using the great new CSS3 features or the new HTML5 tags you soon realize that the pages look bad on all versions of Internet Explorer. HeadJS provides powerful helper classes for CSS to take care of these cross browser issues. If you load the script on bottom of the page you'll experience a FOUC (Flash of Unstyled Content) effect: the page is first rendered without the special CSS classes and then again re-rendered when the script get's loaded. The same goes to the unique HeadJS features: screen size detection, CSS routing and Dynamic CSS. To avoid this ugly FOUC effect you need to load the script on top.
+<p>The latest CSS3 features and the new HTML5 tags do not work on IE. HeadJS provides helper CSS classes to take care of these cross browser issues. But if you load Head JS on bottom of the page you'll experience a FOUC (Flash of Unstyled Content) effect: the page is first rendered without the helper classes and then re-rendered when the script is loaded. The same goes to screen size detection, CSS routing and Dynamic CSS. To avoid this ugly FOUC effect you need to load the script on top.
 </p>
 
 <h3>2. JavaScript organization get's hard</h3>
-<p>When the scripts are included on bottom you cannot do scripting that depend on these scripts <em>before</em> they are included. This is a very common issue on server side templating environments or with setups with separate header/footer files where you typically work inside the middle section. You cannot execute any JavaScript that depend on the scripts that are included on the bottom. 
+<p>When the scripts are included on bottom you cannot do scripting that depend on these scripts <em>before</em> they are included. This is a common issue on server side template systems or with separate header/footer files where you typically work inside the middle section. You cannot execute any JavaScript that depend on the scripts that are included on the bottom. 
 </p>
 
 <h2>The solution</h2>
-<p>The single best solution to this universal problem is to include Head JS on top of the page and load rest 
+<p>The single best solution to these universal problems is to include Head JS on top of the page and load rest 
    of the scripts with it. Make it the only SCRIPT SRC in your HEAD. A small job with following benefits
 </p>
 <blockquote><ol>
@@ -188,7 +190,7 @@
      you'll have a fast, parallel and non-blocking script loader at your disposal
  </li>
 </ol>
-</blockquote><p>In addtion to that you can
+</blockquote><p>In addition to that you can
 </p>
 <ul>
  <li>
@@ -207,9 +209,9 @@
 
 
 <h2>Script loading and execution</h2>
-<p>All script and execution is done with a <code>head.js()</code> method 
+<p>All script loading is done with <code>head.js()</code> 
 </p>
-<div class="code"><div class="highlight"><pre><span class="c">// the most simple case. load a single script without blocking. </span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/file.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// load a script and execute a function after it has been loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/file.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load files in parallel but execute them in sequence</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="o">,</span> <span class="s2">&quot;file2.js&quot;</span><span class="o">,</span> <span class="p">...</span> <span class="s2">&quot;fileN.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// execute function after all scripts have been loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="o">,</span> <span class="s2">&quot;file2.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// files are loaded in parallel and executed in order they arrive</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">);</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file2.js&quot;</span><span class="p">);</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file3.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// the previous can also be written as </span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">).</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">).(</span><span class="s2">&quot;file3.js&quot;</span><span class="p">);</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="c">// the most simple case. load and execute single script without blocking. </span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/file.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// load a script and execute a function after it has been loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/file.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load files in parallel but execute them in sequence</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="o">,</span> <span class="s2">&quot;file2.js&quot;</span><span class="o">,</span> <span class="p">...</span> <span class="s2">&quot;fileN.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// execute function after all scripts have been loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="o">,</span> <span class="s2">&quot;file2.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// files are loaded in parallel and executed in order they arrive</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">);</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file2.js&quot;</span><span class="p">);</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file3.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// the previous can also be written as </span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">).</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">).(</span><span class="s2">&quot;file3.js&quot;</span><span class="p">);</span><br /></pre></div><br /></div>
 
 
 <h2>Script organization</h2>
@@ -221,16 +223,16 @@
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">// call a function after a particular file has been loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="s2">&quot;file2.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">});</span><br /></pre></div><br /></div>
 
-<p>This makes sense if you have large script files and want some functions to be executed before they are all loaded.
+<p>This makes sense if you have large script files and want to execute JavaScript before all files are loaded.
    Otherwise you simply use <code>head.ready()</code> which gets executed after all files are loaded.
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">// a handy shortcut for head.ready()</span><br /><span class="nx">head</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">})</span><br /></pre></div><br /></div>
 
 
 <h2>Labeling scripts</h2>
-<p>By assigning labels developers need not to know the actual file paths.
+<p>By assigning labels the content developers need not to know the actual file paths.
 </p>
-<div class="code"><div class="highlight"><pre><span class="c">// call a function immediately after jQuery Tools is loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;tools&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br />   <span class="c">// setup Tooltips</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tip&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load scripts by assigning a label for them</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><br />   <span class="p">{</span><span class="nx">jquery</span><span class="o">:</span> <span class="s2">&quot;http://http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">tools</span><span class="o">:</span>  <span class="s2">&quot;http://cnd.jquerytools.org/1.2.5/tiny/jquery.tools.min&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">heavy</span><span class="o">:</span>   <span class="s2">&quot;http://a.heavy.library/we/dont/want/to/wait/for.js&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="s2">&quot;http://can.be.mixed/with/unlabeled/files.js&quot;</span><br /><span class="p">);</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="c">// call a function immediately after jQuery Tools is loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;tools&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br />   <span class="c">// setup Tooltips</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tip&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load scripts by assigning a label for them</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><br />   <span class="p">{</span><span class="nx">jquery</span><span class="o">:</span> <span class="s2">&quot;http://http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">tools</span><span class="o">:</span>  <span class="s2">&quot;http://cnd.jquerytools.org/1.2.5/tiny/jquery.tools.min&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">heavy</span><span class="o">:</span>   <span class="s2">&quot;http://a.heavy.library/we/dont/want/to/wait/for.js&quot;</span><span class="p">}</span><span class="o">,</span><br />&nbsp;<br />   <span class="c">// label is not required for all files	</span><br />   <span class="s2">&quot;http://can.be.mixed/with/unlabeled/files.js&quot;</span><br /><span class="p">);</span><br /></pre></div><br /></div>
 
 
 <h2>CSS3 feature detection</h2>
@@ -239,12 +241,12 @@
 </p>
 <div class="code"><div class="highlight"><pre><span class="nc">.borderimage</span> <span class="nc">.box</span> <span class="p">{</span><br />   <span class="c">/* style for browsers that support border images */</span><br /><span class="p">}</span><br />&nbsp;<br /><span class="nc">.no-borderimage</span> <span class="nc">.box</span> <span class="p">{</span><br />   <span class="c">/* style for browsers that does not support border images */</span><br /><span class="p">}</span><br /></pre></div><br /></div>
 
-<p>Typically you assume that a feature exists and code your CSS accordingly and you later add
-   support for older browsers with the aid of "no-" classses.
+<p>On everyday CSS work you assume that a feature exists and code your CSS accordingly and you later add
+   support for older browsers with the aid of "no-" classes.
 </p>
 
 <h3>CSS3 property list</h3>
-<p>Build in CSS3 properties that are detected 
+<p>Natively detected CSS3 properties
 </p>
 <ul>
  <li>
@@ -287,11 +289,11 @@
      <a href="https://developer.mozilla.org/en/CSS/CSS_transitions">transitions</a> ability to animate changes to CSS properties
  </li>
 </ul>
-<p>You can detect more features with <code>head.feature()</code> call. Here we detect the HTML5 video support
+<p>You can detect more with <code>head.feature()</code> call. Here we detect HTML5 video support
 </p>
 <div class="code"><div class="highlight"><pre><span class="nx">head</span><span class="p">.</span><span class="nx">feature</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />	<span class="k">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">);</span><br />	<span class="k">return</span> <span class="o">!!</span><span class="nx">tag</span><span class="p">.</span><span class="nx">canPlayType</span><span class="o">;</span>	<br /><span class="p">});</span><br /></pre></div><br /></div>
 
-<p><a href="https://github.com/Modernizr/Modernizr/blob/master/modernizr.js">Modernizr</a> source code is a good source of tests. The preferred way is to concatenate the test inside the <code>head.min.js</code> file.
+<p><a href="https://github.com/Modernizr/Modernizr/blob/master/modernizr.js">Modernizr</a> is a good source of tests. It's preferred to append the tests inside <code>head.min.js</code> file.
 </p>
 
 <h2>Screen size detection</h2>
@@ -299,9 +301,9 @@
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* styling for screens with resolution less than 1024 pixels */</span><br /><span class="nc">.lt-1024</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="k">medium</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/* styling for small mobile screens */</span><br /><span class="nc">.lt-640</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="n">small</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /></pre></div><br /></div>
 
-<p>Today most sites are optimized for 1024 pixels but with HeadJS you can safely optimize for larger screen sizes.
-   You start by designing your site to the largest allowed size and then add CSS for smaller screens. You can freely
-   decide the sizes you optimize and the amount of them. HeadJS provdes helper classes for following screen sizes:
+<p>Today most sites are optimized for <strong>1024px</strong> but with Head JS you can safely optimize for larger screens.
+   Start by designing to the largest screen and then add CSS rules for smaller ones. You can freely
+   decide the sizes you optimize for and the amount of them. By default Head JS watches following screen widths:
 </p>
 <p><strong>320, 480, 640, 768, 800, 1024, 1280, 1440, 1680, 1920</strong>
 </p>
@@ -349,33 +351,32 @@
 <p>You also get a class name that is a combination of the browser vendor and version 
    such as <code>firefox36</code> representing all versions Firefox 3.6.X branch.
 </p>
-<p>IE is a special case because more often than a lot you end up making hacks and tweaks specifically for Internet Explorer.  You get "less than" helper classes for versions 3 - 10. For example:
+<p>More often than a lot you end up making hacks and tweaks specifically for Internet Explorer. You'll have "less than" helper classes for versions 3 - 10. For example:
 </p>
 <div class="code"><div class="highlight"><pre><span class="o">//</span> <span class="nt">tweak</span> <span class="nt">CSS</span> <span class="nt">for</span> <span class="nt">IE</span> <span class="nt">versions</span> <span class="nt">5</span> <span class="nt">and</span> <span class="nt">below</span><br /><span class="nc">.ie-lt6</span> <span class="nt">li</span> <span class="p">{</span><br />   <span class="k">list-style-type</span><span class="o">:</span> <span class="k">circle</span><span class="p">;</span><br /><span class="p">}</span> <br /></pre></div><br /></div>
 
-<p>It is best to avoid browser detection if you can do feature detection. Having said that HeadJS provides more helper 
-   classes for IE because it is considered as a feature itself. 
+<p>It is best to avoid browser detection if you can do feature detection. 
 </p>
 
 <h2>Page class and ID</h2>
-<p>Say you are on page: http://mydomain.com/addons/node/router.html. Following CSS selectors apply:
+<p>Say you are on page: <code>http://mydomain.com/addons/node/router.html</code>. Following CSS selectors apply:
 </p>
 <div class="code"><div class="highlight"><pre><span class="nc">.addons-node-section</span> <span class="p">{</span> <span class="p">}</span><br />&nbsp;<br /><span class="nf">#router-page</span> <span class="p">{</span> <span class="p">}</span><br /></pre></div><br /></div>
 
 <p>For each given path you get a CSS class representing the "folder" and an ID representing the page. 
    An empty page is "#index-page" and the root folder is ".root-section"
 </p>
-<p>You can change the default suffixes with head_conf variable.
+<p>You can change the these suffixes with head_conf variable.
 </p>
 <div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">head_conf</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">section</span><span class="o">:</span> <span class="s1">&#39;-area&#39;</span><span class="o">,</span> <span class="nx">page</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">};</span><br /></pre></div><br /></div>
 
-<p>With above configuration the selectors would be:
+<p>Now the selectors are:
 </p>
-<div class="code"><div class="highlight"><pre><span class="nc">.addons-node-area</span> <span class="p">{}</span><br /><span class="nf">#router</span> <span class="p">{}</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="nc">.addons-node-area</span> <span class="p">{</span> <span class="p">}</span><br />&nbsp;<br /><span class="nf">#router</span> <span class="p">{</span> <span class="p">}</span><br /></pre></div><br /></div>
 
-<p>JavaScript feature detection
-   Every feature can be found from the <code>head</code> global variable that you can use on your JavaScript code. 
-   Here is a screenshot of the variable:
+
+<h2>JavaScript feature detection</h2>
+<p>Every feature can be found from th <code>headjs</code> global JavaScript variable. Here is a screenshot:
 </p>
 <p>[IMAGE]
 </p>
@@ -407,15 +408,7 @@
 </p>
 
 <h3>head.feature(name, flag)</h3>
-<p>Enable or disable a feature. features are stored as a class name to <code>&lt;html&gt;</code> element and on global <code>headjs</code> variable. if the flag arguments evaluates to <code>true</code> a feature is enabled.
-</p>
-
-<h3>head.cookie(name)</h3>
-<p>Retrieve a cookie value
-</p>
-
-<h3>head.cookie(name, value, [expires])</h3>
-<p>Set a cookie value. optional expires argument specifies the age in days.
+<p>Enable or disable a feature. features are stored as a class name to <code>&lt;html&gt;</code> element and on global <code>headjs</code> variable. if the flag arguments evaluates to <code>true</code> a feature is enabled. Call this method in your HEAD before the stylesheets are loaded.
 </p>
 
 <h2>Configuration</h2>
@@ -426,6 +419,10 @@
 <p>List of configuration variables
 </p>
 <ul>
+ <li>
+     <code>head</code>    name of the global variable to be used. default: "head". Set this to "JS" and you can call <code>JS.ready()</code> for example 
+ </li>
+
  <li>
      <code>screens</code> an array of screen sizes to watch for<br />
 
@@ -438,10 +435,6 @@
  <li>
      <code>page</code>    a suffix for CSS ID representing the current page. default: "-page"
  </li>
-
- <li>
-     <code>head</code>        name of the global variable to be used. default: "head"
- </li>
 </ul>
 </section>
 
@@ -450,33 +443,20 @@
 <section id="download">
 
 
-<h3>Current version (v0.1.0)</h3>
+<h3>Development version (0.1.0 - early beta)</h3>
+<p>The library is not production ready yet. Watch Head JS on <a href="https://github.com/headjs/headjs/">Github</a> to hear about the first release.
+</p>
 <ul>
- <li>
-     <a href="https://github.com/headjs/headjs/tree/v0.1.0">Source code</a>
- </li>
-
- <li>
-     <a href="https://github.com/headjs/headjs/raw/v0.1.0/head.js">head.js</a>
- </li>
-
- <li>
-     <a href="https://github.com/headjs/headjs/raw/v0.1.0/head.min.js">head.min.js</a>
- </li>
-</ul>
-
-<h3>Development version</h3>
-<ul>
- <li>
-     <a href="https://github.com/headjs/headjs/">Source code</a>
- </li>
-
  <li>
      <a href="https://github.com/headjs/headjs/raw/master/head.js">head.js</a>
  </li>
 
  <li>
      <a href="https://github.com/headjs/headjs/raw/master/head.min.js">head.min.js</a>
+ </li>
+
+ <li>
+     <a href="https://github.com/headjs/headjs/raw/master/src/head.loader.js">head.loader.js</a>
  </li>
 </ul>
 </section>
@@ -486,8 +466,18 @@
 		</div>
 		
 	</div>
-			
+
+	<footer>
+		<a href="http://twitter.com/headjs/">Head JS @ Twitter</a>
+		<a href="http://cloudpanic.com/about.html">Author: Tero Piirainen</a>
+	</footer>
+				
 	<script>	
+	
+		head.js("http://www.google-analytics.com/ga.js", function() {		 
+			var tracker = _gat._getTracker("UA-20001309-1");
+			tracker._trackPageview();		 
+		});
 		
 	</script>
 	
