@@ -129,9 +129,9 @@
 </p>
 
 <h2>JavaScript feature detection</h2>
-<p>Every feature can be found on a <code>headjs</code> global JavaScript variable.
+<p>Every feature can also be found on the <code>head</code> (default) JavaScript variable.
 </p>
-<div class="code"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">headjs</span><span class="p">.</span><span class="nx">logged</span><span class="p">)</span> <span class="p">{</span><br />   <span class="c">// do things</span><br /><span class="p">}</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">head</span><span class="p">.</span><span class="nx">logged</span><span class="p">)</span> <span class="p">{</span><br />   <span class="c">// do things</span><br /><span class="p">}</span><br /></pre></div><br /></div>
 
 </section>
 
@@ -324,12 +324,12 @@
 <p>If you resize the browser window your CSS rules will be dynamically applied. 
 </p>
 
-<h2>Browser detection</h2>
+<h2>Browser detection <a name="browser"></a></h2>
 <p>Target CSS for a specific browser. For example
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* CSS for IE version 7 and below */</span><br /><span class="nc">.lt-ie8</span> <span class="nc">.box</span> <span class="p">{</span> <span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/* CSS for IE6 only */</span><br /><span class="nc">.ie6</span> <span class="nt">ul</span>  <span class="p">{</span> <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><br /></pre></div><br /></div>
 
-<p>Here are class names for various browsers independent of the version number
+<p>List of supported class names for various browsers
 </p>
 <ul>
  <li>
@@ -348,14 +348,11 @@
      <code>mozilla</code> Mozilla based browsers such as Firefox
  </li>
 </ul>
-<p>You also get a class name that is a combination of the browser vendor and version 
-   such as <code>firefox36</code> representing all versions Firefox 3.6.X branch.
-</p>
-<p>More often than a lot you end up making hacks and tweaks specifically for Internet Explorer. You'll have "less than" helper classes for versions 3 - 10. For example:
+<p>There are additional "less than" helper classes for IE. 
 </p>
 <div class="code"><div class="highlight"><pre><span class="o">//</span> <span class="nt">tweak</span> <span class="nt">CSS</span> <span class="nt">for</span> <span class="nt">IE</span> <span class="nt">versions</span> <span class="nt">5</span> <span class="nt">and</span> <span class="nt">below</span><br /><span class="nc">.ie-lt6</span> <span class="nt">li</span> <span class="p">{</span><br />   <span class="k">list-style-type</span><span class="o">:</span> <span class="k">circle</span><span class="p">;</span><br /><span class="p">}</span> <br /></pre></div><br /></div>
 
-<p>It is best to avoid browser detection if you can do feature detection. 
+<p>Versions 3 - 10 are covered. It is best to avoid browser detection if you are able to do feature detection. Sometimes it's not possible especially when it comes to IE. 
 </p>
 
 <h2>Page class and ID</h2>
@@ -375,10 +372,10 @@
 <div class="code"><div class="highlight"><pre><span class="nc">.addons-node-area</span> <span class="p">{</span> <span class="p">}</span><br />&nbsp;<br /><span class="nf">#router</span> <span class="p">{</span> <span class="p">}</span><br /></pre></div><br /></div>
 
 
-<h2>JavaScript feature detection</h2>
-<p>Every feature can be found from th <code>headjs</code> global JavaScript variable. Here is a screenshot:
+<h2>JavaScript feature detection <a name="global-var"></a></h2>
+<p>Every feature can be found from th <code>head</code> global JavaScript variable. Here is a screenshot:
 </p>
-<p>[IMAGE]
+<p><img src="media/img/global-var.gif" alt="Head JS global JavaScript variable"/>
 </p>
 </section>
 
@@ -408,7 +405,7 @@
 </p>
 
 <h3>head.feature(name, flag)</h3>
-<p>Enable or disable a feature. features are stored as a class name to <code>&lt;html&gt;</code> element and on global <code>headjs</code> variable. if the flag arguments evaluates to <code>true</code> a feature is enabled. Call this method in your HEAD before the stylesheets are loaded.
+<p>Enable or disable a feature. features are stored as a class name to <code>&lt;html&gt;</code> element and on global <code>head</code> variable. if the flag arguments evaluates to <code>true</code> a feature is enabled. Call this method in your HEAD before the stylesheets are loaded.
 </p>
 
 <h2>Configuration</h2>
@@ -420,7 +417,7 @@
 </p>
 <ul>
  <li>
-     <code>head</code>    name of the global variable to be used. default: "head". Set this to "JS" and you can call <code>JS.ready()</code> for example 
+     <code>head</code>    ability to change global variable name. default: "head". Set to "JS" and you can <code>JS.ready()</code> for example 
  </li>
 
  <li>
