@@ -355,13 +355,13 @@
 <p>Versions 3 - 10 are covered. It is best to avoid browser detection if you are able to do feature detection. Sometimes it's not possible especially when it comes to IE. 
 </p>
 
-<h2>Page class and ID</h2>
-<p>Say you are on page: <code>http://mydomain.com/addons/node/router.html</code>. Following CSS selectors apply:
+<h2>CSS Routing <a name="routing"></a></h2>
+<p>Say you are on a page: <code>http://mydomain.com/addons/node/router.html</code>. Following CSS selectors apply:
 </p>
 <div class="code"><div class="highlight"><pre><span class="nc">.addons-node-section</span> <span class="p">{</span> <span class="p">}</span><br />&nbsp;<br /><span class="nf">#router-page</span> <span class="p">{</span> <span class="p">}</span><br /></pre></div><br /></div>
 
 <p>For each given path you get a CSS class representing the "folder" and an ID representing the page. 
-   An empty page is "#index-page" and the root folder is ".root-section"
+   An empty page is "#index-page" and the site root is ".root-section". If you have an existing id assigned for the HTML element it will be <em>overwritten</em>. On this case you can place the id attribute for the BODY tag.
 </p>
 <p>You can change the these suffixes with head_conf variable.
 </p>
