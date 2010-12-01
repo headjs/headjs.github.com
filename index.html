@@ -51,7 +51,7 @@
    <h3>A 2.30 kb script that speeds up, simplifies and modernizes your site</h3>
 
 	<p>
-		The HEAD section is the worst place to load scripts. It's painfully slow. The more and the bigger the worse it gets. Move the scrips to the end of the page and you cannot use HTML5 and CSS3 safely or you run into dependency problems. Enter Head JS. The single best solution to this universal problem. <a href="#theory">more theory &raquo;</a>
+		The HEAD section is the worst place to load scripts. It's painfully slow. The more and the bigger the worse it gets. Move scrips to the bottom and you run into dependency issues and you cannot <em>safely</em> use HTML5 and CSS3. Enter Head JS. A single best solution to these universal problems. <a href="#theory">more theory &raquo;</a>
 	</p>
    
 </div>
@@ -107,7 +107,7 @@
 <h2>Dynamic CSS</h2>
 <p>Style for various application states
 </p>
-<div class="code"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span><br /><span class="c">/* test if user is logged in by cheking out an existence of a cookie */</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">feature</span><span class="p">(</span><span class="s2">&quot;logged&quot;</span><span class="o">,</span> <span class="nx">get_cookie</span><span class="p">(</span><span class="s2">&quot;auth_token&quot;</span><span class="p">));</span><br /><span class="nt">&lt;/script&gt;</span><br />&nbsp;<br /><span class="nt">&lt;style&gt;</span><br /><span class="c">/* .. and write CSS accordingly */</span><br /><span class="nc">.logged</span> <span class="nf">#login-box</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><br /><span class="nt">&lt;/style&gt;</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span><br /><span class="c">/* detect whether user is logged in. here we check for an existence of a cookie */</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">feature</span><span class="p">(</span><span class="s2">&quot;logged&quot;</span><span class="o">,</span> <span class="nx">mycookielib</span><span class="p">.</span><span class="nx">get_cookie</span><span class="p">(</span><span class="s2">&quot;auth_token&quot;</span><span class="p">));</span><br /><span class="nt">&lt;/script&gt;</span><br />&nbsp;<br /><span class="nt">&lt;style&gt;</span><br /><span class="c">/* .. and write CSS accordingly */</span><br /><span class="nc">.logged</span> <span class="nf">#login-box</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><br /><span class="nt">&lt;/style&gt;</span><br /></pre></div><br /></div>
 
 <p>
 	Whenever you call `head.feature()` your CSS rules will follow. 
