@@ -147,20 +147,20 @@
 </p>
 <p><a href="test/headjs.html">Same scripts loaded with Head JS</a>
 </p>
-<p>Head JS frees the page from script loading burden. The scripts are <em>always</em> loaded in paraller no matter how
-   many of them and what the browser is. The difference on the user experience can be dramatic especially on the initial page load when the scripts are not yet in cache. It's your crucial first impression.
+<p>Head JS frees the page from script loading burden. The scripts loading is separated from the page rendering and they are <em>always</em> loaded in paraller no matter how many of them and what the browser is. The difference on the user experience can be dramatic especially on the initial page load when the scripts are not yet in cache. It's your crucial first impression.
 </p>
 <p>Pages no longer "hang" and there is less or zero "flashing" between pages. It's worth mentioning that a user only cares when the page is ready and current networking tools doesn't highlight this event. They focus on the overall loading of page assets.
 </p>
-<p>Head JS can make your pages load 100% or sometimes even 400% faster. Script loading can make the largest impact
-   on client side optimization. 
+<p>Head JS can make your pages load 100% or sometimes even 400% faster. Script loading can make the largest impact on client side optimization. 
 </p>
 <pre><code>
 </code></pre>
 <h2>SCRIPT SRC</h2>
-<p>Regular SCRIPT SRC tags <em>block</em> the page. The page needs to wait for all scripts to be loaded until it is rendered. This is how majority of web pages work. For example here is source code from apple.com front page.
+<p>Regular SCRIPT SRC tags <em>block</em> the page. The page needs to wait for all scripts to be loaded until it is rendered. This is how majority of web sites are done. For example here are the scripts on Apple.com's HEAD section:
 </p>
-<p>There is not a large difference whether the script tags are placed on top or on bottom of the page. On both 
+<div class="code"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/lib/prototype.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/lib/scriptaculous.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/browserdetect.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/apple_core.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/search_decorator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/promomanager.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/home/scripts/ticker.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/home/scripts/promotracker.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /></pre></div><br /></div>
+
+<p>There is <strong>not</strong> a large difference whether the script tags are placed on top or on bottom of the page. On both 
    cases the scripts must be loaded before page is rendered. <a href="test/script.html">Compare it yourself</a>.
 </p>
 <p>If you are using an older generation browser the scripts will be loaded sequentially. This will be is awfully slow. Here is a screenshot of such a scenario in Firefox 3.0. 
