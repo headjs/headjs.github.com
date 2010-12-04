@@ -4,7 +4,7 @@
 <html class="no-js">
 
 <head>
-	<title>head.js</title>
+	<title>SCRIPT SRC on bottom</title>
 	
 	<script>
 		// calculate difference between zero and window.onload
@@ -16,16 +16,6 @@
 	</script> 
 	
 	
-<script src="../media/js/head.loader.js"></script> 
-
-<script>
-head.js("https://github.com/DmitryBaranovskiy/raphael/raw/master/raphael.js")
-	 .js("https://github.com/jquery/jquery-ui/raw/master/jquery-1.4.4.js")
-	 .js("https://github.com/codyaray/mashbot/raw/b6e3723dc29026bdec9cb7963812e9636cdbe03d/public/javascripts/prototype.js")
-	 .js("https://github.com/headjs/www/raw/master/content/test/jquery-ui.js")
-	 .js("https://github.com/kosmas58/compass-jquery-plugin/raw/master/lib/jslint.js");
-</script>
-
 
 	<!-- inline style so that we can focus on script loading only -->
 	<style>
@@ -61,7 +51,7 @@ head.js("https://github.com/DmitryBaranovskiy/raphael/raw/master/raphael.js")
 		
 		<div id="content" style="display:none">
 		
-			<h1>head.js</h1>
+			<h1>SCRIPT SRC on bottom</h1>
 			
 			<div id="time"><span id="ms"></span> ms</div>
 			
@@ -83,7 +73,7 @@ head.js("https://github.com/DmitryBaranovskiy/raphael/raw/master/raphael.js")
 			
 			<p class="details">
 				
-head.js() calls are always separate from the page rendering. Does not matter whether you load on HEAD or on bottom. You can also load programmatically on demand.
+There is not much difference whether the scripts are loaded on HEAD or on bottom. The key to high performance is to load without <em>blocking</em>.
 
 			</p>
 			
@@ -98,6 +88,12 @@ head.js() calls are always separate from the page rendering. Does not matter whe
 	</div>
 	
 	
+<script src="https://github.com/DmitryBaranovskiy/raphael/raw/master/raphael.js"></script>
+<script src="https://github.com/jquery/jquery-ui/raw/master/jquery-1.4.4.js"></script>
+<script src="https://github.com/codyaray/mashbot/raw/b6e3723dc29026bdec9cb7963812e9636cdbe03d/public/javascripts/prototype.js"></script>
+<script src="https://github.com/headjs/www/raw/master/content/test/jquery-ui.js"></script>
+<script src="https://github.com/kosmas58/compass-jquery-plugin/raw/master/lib/jslint.js"></script>
+
 	
 </body>
 	
