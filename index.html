@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width; initial-scale=1.0">
 
 	<title>Head JS :: The only script in your HEAD</title>
-	<meta name="description" content="HEAD section is absolutely the worst place to load and execute scripts. The more and the bigger the worse it gets. Stop that. Head JS is all you need.">
+	<meta name="description" content="Load scripts like images. Use HTML5 and CSS3 safely. Target CSS for different screens, paths, states and browsers. Make it the only script in your HEAD. A concise solution to universal issues.">
 	<meta name="keywords" content="labjs, modernizr, parallel script loading, javascript loader, non-blocking javascript, javascript modernizer">	
 	<meta name="author" content="tipiirai (Tero Piirainen)">	
 	
@@ -69,16 +69,14 @@
 </p>
 <div class="code"><div class="highlight"><pre><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/jquery.js&quot;</span><span class="o">,</span> <span class="s2">&quot;/google/analytics.js&quot;</span><span class="o">,</span> <span class="s2">&quot;/js/site.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br />   <span class="c">// all done</span><br />   <br /><span class="p">});</span><br /></pre></div><br /></div>
 
-<p>Head JS loads scripts in parallel <em>without blocking</em> the page. The page will load faster even with a single combined file.
+<p>Head JS loads JavaScript files like images without <em>blocking</em> the page. Your page will be faster even with a single combined file.
 </p>
 
 <h2>JavaScript organizer</h2>
 <p>You've read the books and placed SCRIPT SRC tags on the bottom. Good. But can you do this?
 </p>
-<div class="code"><div class="highlight"><pre><span class="c">// use jQuery on the body of the page even though it is not included yet</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#my&quot;</span><span class="p">).</span><span class="nx">jquery_plugin</span><span class="p">();</span><br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load jQuery on bottom of the page</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/jquery.js&quot;</span><span class="p">);</span>  <br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="c">// use jQuery on the body of the page even though it is not included yet</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#my&quot;</span><span class="p">).</span><span class="nx">jquery_plugin</span><span class="p">();</span><br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load jQuery whenever you wish bottom of the page</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/jquery.js&quot;</span><span class="p">);</span>  <br /></pre></div><br /></div>
 
-<p>A typical problem in templating systems or in pages with separate header/footer files. 
-</p>
 
 <h2>CSS modernizer</h2>
 <p>HeadJS adds classes to the HTML root element so that you can do this
@@ -96,7 +94,7 @@
 
 <h2>Screen size detector</h2>
 <p>Design pages for <strong>1980px</strong> wide screen and make it also work on <strong>10"</strong> laptops and mobile phones. 
-   Viewport size is the single most important thing when developing mobile sites.
+   Viewport is the most important thing when developing for mobile clients.
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* screen size less than 1024 pixels */</span><br /><span class="nc">.lt-1024</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="k">medium</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/* fine tune for mobile phone */</span><br /><span class="nc">.lt-640</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="n">small</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /></pre></div><br /></div>
 
@@ -120,11 +118,11 @@
 
 
 <h2>Browser detector</h2>
-<p>All browsers and versions are detected but this is mostly for making IE behave well
+<p>All browsers are detected but we all love IE
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">/* older than IE9 */</span><br /><span class="nc">.lt-ie9</span> <span class="nc">.box</span> <span class="p">{</span> <span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/* CSS fixes for IE6 */</span><br /><span class="nc">.ie6</span> <span class="nt">ul</span>  <span class="p">{</span> <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><br /></pre></div><br /></div>
 
-<p>It's generally wiser to use feature detection but we all know IE: it's a feature in itself.
+<p>It's generally wiser to use feature detection IE is a feature in itself.
 </p>
 
 <h2>JavaScript feature detection</h2>
@@ -140,30 +138,27 @@
 
 
 <h2>Head JS script loader</h2>
-<p>With Head JS your scripts load like images - completely separated from the page rendering. The page is ready sooner. 
-   Always. This is guaranteed even with a single combined JavaScript file. See it yourself:
+<p>With Head JS your scripts load like images - completely separated from the page rendering process. The page is ready sooner. Always. This is guaranteed even with a single combined JavaScript file. See it yourself:
 </p>
 <p><a href="test/script.html">Sample page with 5 SCRIPT SRC tags</a>
 </p>
 <p><a href="test/headjs.html">Same scripts loaded with Head JS</a>
 </p>
-<p>Head JS frees the page from script loading burden. The scripts loading is separated from the page rendering and they are <em>always</em> loaded in paraller no matter how many of them and what the browser is. The difference on the user experience can be dramatic especially on the initial page load when the scripts are not yet in cache. It's your crucial first impression.
+<p>Non-blocking loading is the key to fast pages. Moreover Head JS loads scripts in <em>parallel</em> no matter how many of them and what the browser is. The speed difference can be dramatic especially on the initial page load when the scripts are not yet in cache. It's your crucial first impression.
 </p>
-<p>Pages no longer "hang" and there is less or zero "flashing" between pages. It's worth mentioning that a user only cares when the page is ready and current networking tools doesn't highlight this event. They focus on the overall loading of page assets.
+<p>Pages no longer "hang" and there is less or zero "flashing" between pages. User only cares when the page is ready. Unfortunately current networking tools doesn't highlight this crucial point. They focus on the overall loading of assets instead.
 </p>
-<p>Head JS can make your pages load 100% or sometimes even 400% faster. Script loading can make the largest impact on client side optimization. 
+<p>Head JS can make your pages load 100% or even 400% faster. It can make the largest impact on client side optimization.
 </p>
-<pre><code>
-</code></pre>
+
 <h2>SCRIPT SRC</h2>
-<p>Regular SCRIPT SRC tags <em>block</em> the page. The page needs to wait for all scripts to be loaded until it is rendered. This is how majority of web sites are done. For example here are the scripts on Apple.com's HEAD section:
+<p>This is from Apple.com's HEAD:
 </p>
 <div class="code"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/lib/prototype.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/lib/scriptaculous.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/browserdetect.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/apple_core.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/search_decorator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/global/scripts/promomanager.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/home/scripts/ticker.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://images.apple.com/home/scripts/promotracker.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span><br /></pre></div><br /></div>
 
-<p>There is <strong>not</strong> a large difference whether the script tags are placed on top or on bottom of the page. On both 
-   cases the scripts must be loaded before page is rendered. <a href="test/script.html">Compare it yourself</a>.
+<p>All these scripts <em>block</em> the page. The page needs to wait for these to be loaded until it starts rendering itself. This is how majority of web sites are done. There is <strong>not</strong> a large difference whether the script tags are placed on top or on bottom of the page. On both cases the scripts must be loaded first. <a href="test/script.html">Compare it yourself</a>.
 </p>
-<p>If you are using an older generation browser the scripts will be loaded sequentially. This will be is awfully slow. Here is a screenshot of such a scenario in Firefox 3.0. 
+<p>With older generation browsers the scripts will be loaded sequentially. Here is a screenshot from Firefox 3.0. 
 </p>
 <p><img src="media/img/serial-load.gif" alt="sequential downloading of scripts"/>
 </p>
@@ -171,11 +166,10 @@
 </p>
 
 <h2>Developing with Head JS</h2>
-<pre><code>
-</code></pre><p>With Head JS your page can be ready <em>sooner</em> than your scripts. This leads to following
+<p>With Head JS your page can be ready before your scripts. You need to prepare for that
 </p>
 <ul>
- <li><p>The "DOM ready" event such as $(document).ready() is already fired when the scripts arrive. 
+ <li><p>The "DOM ready" event such as <code>$(document).ready()</code> is already fired when the scripts arrive. 
      If the loaded scripts depend on that event make sure your library can handle this. jQuery 1.4+ works.<br />
 
 </p>
@@ -184,19 +178,18 @@
 
  <li><p>If your scripts modify the page you can see a "flash of unbehaviored content" effect (FUBC):
      a quick glimpse of unmodified HTML before the loaded scripts act on it. You can avoid this by initially hiding 
-     the modifiable elements before your scripts make them visible and do their job. 
+     the modifiable elements before your scripts make them visible and do their job.
 </p>
 
  </li>
 </ul>
-<pre><code>
-</code></pre>
+
 <h2>Combining scripts</h2>
 <p>There is a common misbelief that a single combined script performs best. Wrong: 
 </p>
 <ul>
- <li><p>latest browsers and Head JS can load scripts in parallel. loading 3 small files in parallel 
-     instead of as a single chunk is actually faster. 
+ <li><p>latest browsers and Head JS can load scripts in parallel. loading 3 parts in parallel 
+     instead of as a single chunk is usually faster. 
 </p>
 
  </li>
@@ -207,9 +200,7 @@
 
  </li>
 
- <li><p>many popular libraries are hosted on CDN. you should take the advantage of it instead of hosting yourself <br />
-<br />
-
+ <li><p>many popular libraries are hosted on CDN. you should take the advantage of it instead of hosting yourself
 </p>
 
  </li>
@@ -219,12 +210,11 @@
 
  </li>
 </ul>
-<p>Combining scripts is a good pattern but when loading with Head JS the file amount is not <em>as</em> critical as it is with SCRIPT SRC because page rendering is not blocked.
+<p>With Head JS the file amount is not <em>as</em> critical as it is with SCRIPT SRC because page rendering is not blocked. Combining scripts is an important optimization method but you can go too far with it.
 </p>
 
 <h2>Page styling and CSS</h2>
-<p>HEAD is the only place where a script can safely affect on page styling because it's executed before stylesheets. 
-   Head JS takes this important role seriously:
+<p>Stylesheets needs to be <a href="http://developer.yahoo.com/performance/rules.html#css_top">on top</a>. HEAD is the only place where a script is executed before the stylesheets and where it can give a helping hand for CSS developer. Head JS takes this important role seriously:
 </p>
 <ul>
  <li>
@@ -243,9 +233,9 @@
      you can style your pages differently depending on the application state, such as whether user is logged or not
  </li>
 </ul>
-<p>The included file must be as small as possible since it blocks the page rendering process. This was one of the primary goals when designing Head JS. It currently weights only 2.3 kb when minified and gzipped. Obviously it's preferred to load the file from a CDN. Google: I'm <a href="http://code.google.com/p/google-ajax-apis/issues/detail?id=548">staring at You</a>! (like it? give it a star)
+<p>HEAD script blocks so it must be small. This is the essence of Head JS. It weights 2.3 kb when minified and gzipped. It's preferred to load the file from a CDN. Google: I'm <a href="http://code.google.com/p/google-ajax-apis/issues/detail?id=548">staring at You</a>! (please give it a star)
 </p>
-<p>If you attempt to style the page on the scripts loaded with Head JS you can see a "Flash of Unstyled Content" effect (FOUC): the page is first rendered without the style definitions and then re-rendered when the scripts are loaded.
+<p>If you attempt to style the page on the scripts loaded with Head JS you can see a "Flash of Unstyled Content" (FOUC) effect: the page is first rendered without the to-be-loaded style definitions and then re-rendered when the scripts are executed.
 </p>
 <p>Note: As crazy as it sounds FUBC and FOUC are not my acronyms.
 </p>
