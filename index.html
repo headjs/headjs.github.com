@@ -146,7 +146,7 @@
 </p>
 <p>Non-blocking loading is the key to fast pages. Moreover Head JS loads scripts in <em>parallel</em> no matter how many of them and what the browser is. The speed difference can be dramatic especially on the initial page load when the scripts are not yet in cache. It's your crucial first impression.
 </p>
-<p>Pages no longer "hang" and there is less or zero "flashing" between pages. User only cares when the page is ready. Unfortunately current networking tools doesn't highlight this crucial point. They focus on the overall loading of assets instead.
+<p>Pages no longer "hang" and there is less or zero "flashing" between pages. User only cares when the page is ready. Unfortunately current networking tools don't highlight this crucial point. They focus on the overall loading of assets instead.
 </p>
 <p>Head JS can make your pages load 100% or even 400% faster. It can make the largest impact on client side optimization.
 </p>
@@ -205,7 +205,8 @@
 
  </li>
 
- <li><p>combined files are easily larger than <strong>15kb</strong>. iPhone cannot cache files larger than that.
+ <li><p><a href="http://www.phpied.com/iphone-caching/">iPhone 3.x</a> cannot cache files larger than <strong>15kb</strong> and in iPhone 4 the limit is <strong>25kb</strong>. And this is the size before gzipping. if you care about iPhones you should respect these limits.<br />
+
 </p>
 
  </li>
@@ -333,6 +334,101 @@
 
 <p><a href="https://github.com/Modernizr/Modernizr/blob/master/modernizr.js">Modernizr</a> is a good source of tests. It's preferred to append the tests inside <code>head.min.js</code> file.
 </p>
+
+<h2>HTML5 enabler</h2>
+<p>Head JS adds HTML5 support for all browsers: 
+</p>
+<div class="code"><div class="highlight"><pre><span class="nt">&lt;style&gt;</span><br />   <span class="nt">article</span> <span class="p">{</span> <span class="k">text-shadow</span><span class="o">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">#ccc</span><span class="p">;</span> <span class="p">}</span><br /><span class="nt">&lt;/style&gt;</span><br />&nbsp;<br /><span class="c">&lt;!-- works in IE too --&gt;</span><br /><span class="nt">&lt;article&gt;</span><br />   <span class="nt">&lt;header&gt;&lt;/header&gt;</span><br />   <span class="nt">&lt;section&gt;&lt;/section&gt;</span><br />   <span class="nt">&lt;footer&gt;&lt;/footer&gt;</span><br /><span class="nt">&lt;/article&gt;</span><br /></pre></div><br /></div>
+
+
+<h4>List of new tags</h4>
+<ul>
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_abbr.asp">abbr</a> an abbrevation
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_article.asp">article</a> defines external content
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_aside.asp">aside</a> defines some content aside from the content it is placed in
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_audio.asp">audio</a> defines sound, such as music or other audio streams.
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_canvas.asp">canvas</a> a container for javascript graphics
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_details.asp">details</a> describe details about a document, or parts of a document
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_figcaption.asp">figcaption</a> contains a caption for the "figure" element
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_figure.asp">figure</a> stand-alone content, typically used to explain parts of a document
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_footer.asp">footer</a> defines the footer of a section or document
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_header.asp">header</a> defines the header of a section or document
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_hgroup.asp">hgroup</a> defines the heading of a section or a document.
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_mark.asp">mark</a> tag defines marked or highlighted text
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_meter.asp">meter</a> for measurements with a known minimum and maximum value
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_nav.asp">nav</a> a section intended for navigation
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_output.asp">output</a> defines different types of output, such as output written by a script
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_progress.asp">progress</a>display the progress of a time consuming function in JavaScript.
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_section.asp">section</a> defines sections in a document such as chapters, headers, footers, or any other sections of the document.
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_summary.asp">summary</a> contains a header for the "details" element
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_time.asp">time</a> defines a time or a date, or both.
+ </li>
+
+ <li>
+     <a href="http://www.w3schools.com/html5/tag_video.asp">video</a> defines video, such as a movie clip or other video streams<br />
+<br />
+
+ </li>
+</ul>
+<p>IE has problems printing HTML5 elements. You can fix that by loading a <a href="http://www.iecss.com/print-protector/">print protector</a> script on your page:
+</p>
+<div class="code"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">head</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">ie</span><span class="p">)</span>  <span class="p">{</span><br />   <span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;http://www.iecss.com/print-protector/javascript/iepp.1-6-2.min.js&quot;</span><span class="p">);</span>		<br /><span class="p">}</span><br /></pre></div><br /></div>
+
 
 <h2>Screen size detection</h2>
 <p>Target CSS for various screen sizes. For example
@@ -494,6 +590,10 @@
      <a href="https://github.com/headjs/headjs/raw/master/src/head.loader.js">head.loader.js</a>
  </li>
 </ul>
+
+<h2>Issues</h2>
+<p>Unfortunately there is no way to see whether a script was successfully loaded with IE or not. For that reason a feature such as <code>head.error()</code> is impossible to implement. When a script cannot be accessed head JS is silent.
+</p>
 </section>
 
 <pre><code>
