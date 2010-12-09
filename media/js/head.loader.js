@@ -1,29 +1,31 @@
 /**
-	Head Loader: The ultimate JavaScript loader. Can be used as a standalone tool. 
+ 	Head JS		The only script in your <HEAD>
+	Copyright	Tero Piirainen (tipiirai)
+	License 		MIT / http://bit.ly/mit-license
 	
-	copyright: "tipiirai" / Tero Piirainen
-	license: MIT
-*/ 
+	http://headjs.com
+*/
 (function(doc) { 
 		
 	var head = doc.documentElement,
-		 ready = false,
-		 queue = [],
-		 thelast = [],		// functions to be executed last
-		 waiters = {},		// functions waiting for scripts
-		 scripts = {};		// the scripts in different states
+		 ie = navigator.userAgent.toLowerCase().indexOf("msie") != -1, 
+		 ready = false, 	// is HEAD "ready"
+		 queue = [],		// if not -> defer execution
+		 handlers = {},	// user functions waiting for events
+		 scripts = {};		// loadable scripts in different states
 
 		 
 	/*** public API ***/
 	var head_var = window.head_conf && head_conf.head || "head",
-		 api = window[head_var] = (window[head_var] || {}); 
+		 api = window[head_var] = (window[head_var] || function() { api.ready.apply(null, arguments); }); 
 	
+		
 	api.js = function() {
 			
 		var args = arguments,
 			rest = [].slice.call(args, 1),
-			next = rest[0];				 
-			 
+			next = rest[0];   
+			
 		if (!ready) {
 			queue.push(function()  {
 				api.js.apply(null, args);				
@@ -34,11 +36,17 @@
 		// multiple arguments	 
 		if (next) {				
 			
-			// preload all immediately
-			if (!isFunc(next)) { preloadAll.apply(null, rest); }
+			// preload the rest
+			if (!isFunc(next)) { 
+				each(rest, function(el) {
+					if (!isFunc(el)) {
+						preload(getScript(el));
+					} 
+				});			
+			}
 		
 			// load all recursively in order
-			load(getScript(args[0]), isFunc(next) ? next : function() {	
+			load(getScript(args[0]), isFunc(next) ? next : function() {
 				api.js.apply(null, rest);
 			});				
 			
@@ -49,35 +57,61 @@
 		
 		return api;		 
 	};
-		
+	
 	api.ready = function(key, fn) {
-
-		// single function	
-		if (isFunc(key)) { return thelast.push(key); }					
+		
+		var script = scripts[key];
+		
+		if (script && script.state == 'loaded') {
+			fn.call();
+			return api;
+		}
+		
+		// shift arguments	
+		if (isFunc(key)) {
+			fn = key; 
+			key = "ALL";
+		}		 
 						
-		var arr = waiters[key];
-		if (!arr) { arr = waiters[key] = [fn]; }
+		var arr = handlers[key];
+		if (!arr) { arr = handlers[key] = [fn]; }
 		else { arr.push(fn); }
 		return api;
 	};
 	
+	/*
+	api.dump = function() {
+		console.dir(scripts);	
+	};
+	*/
+
+	
 	/*** private functions ***/
 	function getScript(url) {
 		
-		var script = scripts[url.url || url];
+		var script = scripts[url.name || url];
 		if (script) { return script; }
 		
-		if (typeof url == 'object')  {
+		if (typeof url == 'object') {
 			for (var key in url) {
 				if (url[key]) {
 					script = { name: key, url: url[key] };
 				}
 			}
 		} else {
-			script = { name: url.substring(url.indexOf("/", 10) + 1, url.indexOf("?")), url: url }; 
+
+
+			var els = url.split("/"),
+				 name = els[els.length -1],
+				 i = name.indexOf("?");
+				 
+			script = {
+				name: i != -1 ? name.substring(0, i) : name, 
+				url: url 
+			}; 
 		}
 		
-		scripts[script.url] = script;
+		scripts[script.name] = script;
 		return script;
 	}
 	
@@ -97,13 +131,6 @@
 		return Object.prototype.toString.call(el) == '[object Function]';
 	} 
 	
-	function preloadAll() {
-		each(arguments, function(el) {
-			if (!isFunc(el)) {
-				preload(getScript(el));
-			} 
-		});		
-	}
 	
 	function onPreload(script) {
 		script.state = "preloaded";
@@ -166,20 +193,20 @@
 			
 			if (callback) { callback.call(); }			
 			
-			// waiters for this script
-			each(waiters[script.name], function(fn) {
+			// handlers for this script
+			each(handlers[script.name], function(fn) {
 				fn.call();		
 			});
 
 			// TODO: do not run until DOM is loaded			
 			var allLoaded = true;
 		
-			for (var key in scripts) {
-				if (scripts[key].state != 'loaded') { allLoaded = false; }	
+			for (var name in scripts) {
+				if (scripts[name].state != 'loaded') { allLoaded = false; }	
 			}
 		
 			if (allLoaded) {
-				each(thelast, function(fn) {
+				each(handlers.ALL, function(fn) {
 					if (!fn.done) { fn.call(); }
 					fn.done = true;
 				});
@@ -193,16 +220,18 @@
 		
 		var elem = doc.createElement('script');		
 		elem.type = 'text/' + (src.type || 'javascript');
-		elem.src = src.src || src;
-		
+		elem.src = src.src || src;  
+			
 		elem.onreadystatechange = elem.onload = function() {
-			if (!callback.done) {
+			var state = elem.readyState;
+
+			if (!callback.done && (!state || /loaded|complete/.test(state))) {
 				callback.call();
 				callback.done = true;
 			}
 			
 			// cleanup. IE runs into trouble
-			if (!document.all) {			
+			if (!ie) {			
 				head.removeChild(elem);
 			}
 		}; 
@@ -211,9 +240,7 @@
 	} 
 	
 	/*
-		This timer delays the start a little. All just become more robust. 
-		Still a bit of a mystery. Will investigate report when all clear.		
-		Not related to DomContentLoaded.	 
+		Start after a small delay: guessing that the the head tag needs to be closed
 	*/	
 	setTimeout(function() {
 		ready = true;
