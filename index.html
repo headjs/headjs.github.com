@@ -271,8 +271,10 @@
 <h2>Labeling scripts</h2>
 <p>By assigning labels the content developers need not to know the actual file paths.
 </p>
-<div class="code"><div class="highlight"><pre><span class="c">// call a function immediately after jQuery Tools is loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="s2">&quot;tools&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br />   <span class="c">// setup Tooltips</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tip&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load scripts by assigning a label for them</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><br />   <span class="p">{</span><span class="nx">jquery</span><span class="o">:</span> <span class="s2">&quot;http://http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">tools</span><span class="o">:</span>  <span class="s2">&quot;http://cnd.jquerytools.org/1.2.5/tiny/jquery.tools.min&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">heavy</span><span class="o">:</span>   <span class="s2">&quot;http://a.heavy.library/we/dont/want/to/wait/for.js&quot;</span><span class="p">}</span><span class="o">,</span><br />&nbsp;<br />   <span class="c">// label is not required for all files	</span><br />   <span class="s2">&quot;http://can.be.mixed/with/unlabeled/files.js&quot;</span><br /><span class="p">);</span><br /></pre></div><br /></div>
+<div class="code"><div class="highlight"><pre><span class="c">// call a function immediately after jQuery Tools is loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="s2">&quot;tools&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br />   <span class="c">// setup Tooltips</span><br />   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tip&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load scripts by assigning a label for them</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><br />   <span class="p">{</span><span class="nx">jquery</span><span class="o">:</span> <span class="s2">&quot;http://http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">tools</span><span class="o">:</span> <span class="s2">&quot;http://cnd.jquerytools.org/1.2.5/tiny/jquery.tools.min&quot;</span><span class="p">}</span><span class="o">,</span><br />   <span class="p">{</span><span class="nx">heavy</span><span class="o">:</span> <span class="s2">&quot;http://a.heavy.library/we/dont/want/to/wait/for.js&quot;</span><span class="p">}</span><span class="o">,</span><br />&nbsp;<br />   <span class="c">// label is optional	</span><br />   <span class="s2">&quot;http://can.be.mixed/with/unlabeled/files.js&quot;</span><br /><span class="p">);</span><br /></pre></div><br /></div>
 
+<p>If label is not given then the file name without the path is used as the key. On the jQuery library above this would be just "jquery.min.js".
+</p>
 
 <h2>CSS3 feature detection</h2>
 <p>When a particular feature is supported a corresponding class name is added to the <html> element. 
@@ -574,24 +576,24 @@
 <section id="download">
 
 
-<h3>Development version (0.1.0 - early beta)</h3>
-<p>The library is not production ready yet. Watch Head JS on <a href="https://github.com/headjs/headjs/">Github</a> to hear about the first release.
+<h2>Version 0.2</h2>
+<p>The library is rather steady. A week to <a href="https://github.com/headjs/headjs/issues">get feedback</a> and a production release is out. <a href="https://github.com/headjs/headjs/">Watch Head JS</a> to be the first to hear about the release.
 </p>
 <ul>
  <li>
-     <a href="https://github.com/headjs/headjs/raw/master/head.js">head.js</a>
+     <a href="https://github.com/headjs/headjs/raw/master/dist/head.js">head.js</a>
  </li>
 
  <li>
-     <a href="https://github.com/headjs/headjs/raw/master/head.min.js">head.min.js</a>
+     <a href="https://github.com/headjs/headjs/raw/master/dist/head.min.js">head.min.js</a>
  </li>
 
  <li>
-     <a href="https://github.com/headjs/headjs/raw/master/src/head.loader.js">head.loader.js</a>
+     <a href="https://github.com/headjs/headjs/raw/master/dist/head.load.min.js">head.load.min.js</a>
  </li>
 </ul>
 
-<h2>Issues</h2>
+<h3>Issues</h3>
 <p>Unfortunately there is no way to see whether a script was successfully loaded with IE or not. For that reason a feature such as <code>head.error()</code> is impossible to implement. When a script cannot be accessed head JS is silent.
 </p>
 </section>
@@ -603,8 +605,9 @@
 	</div>
 
 	<footer>
+		<a href="http://cloudpanic.com/about.html">Author: <strong>Tero Piirainen</strong></a> &bull;
 		<a href="http://twitter.com/headjs/">Head JS @ Twitter</a>
-		<a href="http://cloudpanic.com/about.html">Author: Tero Piirainen</a>
+		
 	</footer>
 				
 	<script>	
