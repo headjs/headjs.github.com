@@ -36,6 +36,7 @@
 	<a href="#theory">theory</a>
 	<a href="#usage">usage</a>
 	<a href="#api">api</a>
+	<a href="#internals">internals</a>
 	<a href="#download">download</a>
 </nav>
 
@@ -162,25 +163,6 @@
 <p>It's easy to understand that this is poison for performance. The single best optimization technique for script loading is to use a non-blocking and paraller script loader such as Head JS.
 </p>
 
-<h2>Developing with Head JS</h2>
-<p>With Head JS your page can be ready before your scripts. You need to prepare for that
-</p>
-<ul>
- <li><p>The "DOM ready" event such as <code>$(document).ready()</code> is already fired when the scripts arrive. 
-     If the loaded scripts depend on that event make sure your library can handle this. jQuery 1.4+ works.<br />
-
-</p>
-
- </li>
-
- <li><p>If your scripts modify the page you can see a "flash of unbehaviored content" effect (FUBC):
-     a quick glimpse of unmodified HTML before the loaded scripts act on it. You can avoid this by initially hiding 
-     the modifiable elements before your scripts make them visible and do their job.
-</p>
-
- </li>
-</ul>
-
 <h2>Combining scripts</h2>
 <p>There is a common misbelief that a single combined script performs best. Wrong: 
 </p>
@@ -249,6 +231,41 @@
 </p>
 <div class="code"><div class="highlight"><pre><span class="c">// the most simple case. load and execute single script without blocking. </span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/file.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// load a script and execute a function after it has been loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/file.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// load files in parallel but execute them in sequence</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="o">,</span> <span class="s2">&quot;file2.js&quot;</span><span class="o">,</span> <span class="p">...</span> <span class="s2">&quot;fileN.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// execute function after all scripts have been loaded</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="o">,</span> <span class="s2">&quot;file2.js&quot;</span><span class="o">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span><br />   <br /><span class="p">});</span><br />&nbsp;<br /><span class="c">// files are loaded in parallel and executed in order they arrive</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">);</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file2.js&quot;</span><span class="p">);</span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file3.js&quot;</span><span class="p">);</span><br />&nbsp;<br /><span class="c">// the previous can also be written as </span><br /><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">).</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file1.js&quot;</span><span class="p">).</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;file3.js&quot;</span><span class="p">);</span><br /></pre></div><br /></div>
 
+
+<h3>DOM Ready</h3>
+<p>With <code>head.js()</code> call your page can be ready before your scripts. You need to prepare for that
+</p>
+<ul>
+ <li><p>The "DOM ready" event such as <code>$(document).ready()</code> is already fired when the scripts arrive. 
+     If the loaded scripts depend on that event make sure your library can handle this. jQuery 1.4+ works.<br />
+
+</p>
+
+ </li>
+
+ <li><p>If your scripts modify the page you can see a "flash of unbehaviored content" effect (FUBC):
+     a quick glimpse of unmodified HTML before the loaded scripts act on it. You can avoid this by initially hiding 
+     the modifiable elements before your scripts make them visible and do their job.
+</p>
+
+ </li>
+
+ <li><p><code>document.write()</code> statements are not supported since it's hard or impossible to know where to write to. 
+   It's an bad programming habit anyway so it's likely that Head JS will ever support this.
+</p>
+
+ </li>
+</ul>
+
+<h3>Enable caching</h3>
+<p>Make sure that the files loaded with head.js can be cached. For example:
+</p>
+<p><img src="media/img/expires-header.gif" alt="file caching with future expiration header"/>
+</p>
+<p>This Google Analytics script will be served from browser's cache after the initial load. A proper max-age header configuration on the web server does the trick. If you care about performance this is a good habit for every JavaScript file. Not only with head.js.
+</p>
+<p>Internally Head JS uses browser's cache to preload scripts before they are executed. This trick is used on Chrome, Safari and IE. Without caching enabled a file will be <em>loaded twice</em> on the initial load. There are no issues on Firefox and Opera because they execute files on the order they are programmatically inserted on the page.
+</p>
 
 <h2>Script organization</h2>
 <p>Call a function after all scripts have been loaded 
@@ -572,33 +589,31 @@
 <section id="download">
 
 
-<h2>Version 0.5</h2>
-<p>Production ready.
-</p>
+<h2>Version 0.8</h2>
 <ul>
  <li>
-     <a href="https://github.com/headjs/headjs/raw/master/dist/head.js">head.js</a>
+     <a href="https://github.com/headjs/headjs/raw/master/dist/head.js">head.js</a> - source code
  </li>
 
  <li>
-     <a href="https://github.com/headjs/headjs/raw/master/dist/head.min.js">head.min.js</a>
+     <a href="https://github.com/headjs/headjs/raw/master/dist/head.min.js">head.min.js</a> - minified version
  </li>
 
  <li>
-     <a href="https://github.com/headjs/headjs/raw/master/dist/head.load.min.js">head.load.min.js</a>
+     <a href="https://github.com/headjs/headjs/raw/master/dist/head.load.min.js">head.load.min.js</a> - JavaScript loader only
  </li>
 </ul>
-<p>I'm JavaScripter. There are <a href="http://www.stevesouders.com/blog/2010/12/15/controljs-part-1/">couple</a> of <a href="http://blog.getify.com/2010/12/on-script-loaders/">guys</a> wiser than me in theory of script loading. Eventually all this wisdom will be merged to Head JS
-</p>
 
 <h3>Issues</h3>
-<ul>
- <li>
-     There is no way to detect if script loading failed in IE. For that reason a feature such as <code>head.error()</code> is impossible to implement. When a script URL cannot be accessed Head JS is silent.
- </li>
-</ul>
-</section>
+<p>There is no way to detect if script loading failed in IE. For that reason a feature such as <code>head.error()</code> is impossible to implement. When a script URL cannot be accessed Head JS is silent.
+</p>
 
+<h2>Future</h2>
+<p>Head JS is rapidly being adopted to large number of websites all the time. A quick <a href="http://twitter.com/search?q=headjs">Twitter search</a> reveals that it's becoming a core client side development tool for many. For the same reason I also get a lot of feature requests. Right now the strategy is to keep Head JS as minimalistic as it is now. 
+</p>
+<p>Expect <em>not</em> to see extensive CSS3 testing, CSS loaders or more complex loading logics being developed. These can be build on <em>top</em> of Head JS. A separate module or extension. If you have an idea pleace concider this first.
+   </section>
+</p>
 <pre><code>
 </code></pre>
 		</div>
