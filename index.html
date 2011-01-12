@@ -193,30 +193,30 @@
 </p>
 
 <h2>Page styling and CSS</h2>
-<p>Stylesheets needs to be <a href="http://developer.yahoo.com/performance/rules.html#css_top">on top</a>. HEAD is the only place where a script is executed before the stylesheets and where it can give a helping hand for CSS developer. Head JS takes this important role seriously:
+<p>Stylesheets needs to be <a href="http://developer.yahoo.com/performance/rules.html#css_top">on top</a>. An included script in the HEAD is the only place where a script is executed before the stylesheets are loaded and where it can give a helping hand for the CSS developer. Head JS takes this important role seriously and gives you following possibilities:
 </p>
 <ul>
  <li>
-     you can use the latest CSS3 techniques and provide alternate CSS for IE and other old school browsers
+     use the latest CSS3 techniques and provide alternate CSS for IE and other old school browsers
  </li>
 
  <li>
-     you can safely use HTML5 tags even with IE
+     safely use HTML5 tags even with IE
  </li>
 
  <li>
-     you can target CSS for specific screen widths, browsers and paths
+     target CSS for specific screen widths, browsers and URLs
  </li>
 
  <li>
-     you can style your pages differently depending on the application state, such as whether user is logged or not
+     style your pages differently depending on the application state, such as whether user is logged or not
  </li>
 </ul>
-<p>HEAD script blocks so it must be small. This is the essence of Head JS. It weights 2.3 kb when minified and gzipped. It's preferred to load the file from a CDN. Google: I'm <a href="http://code.google.com/p/google-ajax-apis/issues/detail?id=548">staring at You</a>! (please give it a star)
+<p>Essentially Head JS adds CSS class names to the <code>&lt;html&gt;</code> element. If you attempt to do this in a script that is loaded with Head JS you can see a "Flash of Unstyled Content" (FOUC) effect: the page is first rendered without the to-be-loaded style definitions and then re-rendered when the scripts are executed. This is why the CSS feature detection is a core part of Head JS. 
 </p>
-<p>If you attempt to style the page on the scripts loaded with Head JS you can see a "Flash of Unstyled Content" (FOUC) effect: the page is first rendered without the to-be-loaded style definitions and then re-rendered when the scripts are executed.
+<p>A script in HEAD blocks so it must be small. This is the essence of Head JS. It weights only 2.5 kb when minified and gzipped. It's preferred to load the file from a CDN. Google: I'm <a href="http://code.google.com/p/google-ajax-apis/issues/detail?id=548">staring at You</a>! (please give it a star)
 </p>
-<p>Note: As crazy as it sounds FUBC and FOUC are not my acronyms.
+<p><em>Note: As crazy as it sounds FUBC and FOUC are not my acronyms.</em>
 </p>
 </section>
 
@@ -290,7 +290,7 @@
 </p>
 
 <h2>CSS3 feature detection</h2>
-<p>When a particular feature is supported a corresponding class name is added to the <html> element. 
+<p>When a particular feature is supported a corresponding class name is added to the <code>&lt;html&gt;</code> element. 
    When a feature is not supported the class name is prefixed with <code>no-</code>. For example:
 </p>
 <div class="code"><div class="highlight"><pre><span class="nc">.borderimage</span> <span class="nc">.box</span> <span class="p">{</span><br />   <span class="c">/* style for browsers that support border images */</span><br /><span class="p">}</span><br />&nbsp;<br /><span class="nc">.no-borderimage</span> <span class="nc">.box</span> <span class="p">{</span><br />   <span class="c">/* style for browsers that does not support border images */</span><br /><span class="p">}</span><br /></pre></div><br /></div>
@@ -601,7 +601,15 @@
  <li>
      <a href="https://github.com/headjs/headjs/raw/master/dist/head.load.min.js">head.load.min.js</a> - JavaScript loader only
  </li>
+
+ <li>
+     <a href="https://github.com/headjs/headjs">Github Repository</a> - all sources 
+ </li>
 </ul>
+<p>My (humble) goal is to have Head JS available on Google's CDN. This is only possible if you <a href="http://code.google.com/p/google-ajax-apis/issues/detail?id=548">give a star</a>.
+</p>
+<hr />
+
 
 <h3>Issues</h3>
 <p>There is no way to detect if script loading failed in IE. For that reason a feature such as <code>head.error()</code> is impossible to implement. When a script URL cannot be accessed Head JS is silent.
@@ -610,7 +618,7 @@
 <h2>Future</h2>
 <p>Head JS is rapidly being adopted to large number of websites all the time. A quick <a href="http://twitter.com/search?q=headjs">Twitter search</a> reveals that it's becoming a core client side development tool for many. For the same reason I also get a lot of feature requests. Right now the strategy is to keep Head JS as minimalistic as it is now. 
 </p>
-<p>Expect <em>not</em> to see extensive CSS3 feature detection, dynamic CSS loading or more complex JS loading developed. These can be build on <em>top</em> of Head JS. A separate module or extension. If you have an idea pleace concider this first.
+<p>Expect <em>not</em> to see extensive CSS3 feature detection, dynamic CSS loading or more complex JS loading developed. These can be build on <em>top</em> of Head JS. A separate module or extension. If you have an idea pleace consider this first.
    </section>
 </p>
 <pre><code>
