@@ -416,11 +416,15 @@ separate module or extension. If you have an idea please consider this&nbsp;firs
     </footer>
 
     <script>
-            head.js("http://www.google-analytics.com/ga.js", function() {
-            var tracker = _gat._getTracker("UA-20001309-1");
-            tracker._trackPageview();
-        });
-        </script>
+        head.js("http://www.google-analytics.com/ga.js", function() {
+			var tipiirai = _gat._getTracker("UA-20001309-1");
+			tipiirai._trackPageview();
+			
+			// To get some insight for me too :)
+			var itechnology = _gat._getTracker("UA-15567888-4");
+			itechnology._trackPageview();
+		});
+    </script>
 
 </body>
 
