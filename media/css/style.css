@@ -9,7 +9,20 @@
     border: 0;
     margin: 0;
 }
+html {
+    background-color: #f9f9f9;
+}
 
+body {
+
+    font: 14px sans-serif;
+    line-height: 1.22;
+
+    margin: 10px auto;
+    width: 982px;
+    color: #333;
+    font: 13px sans-serif;
+}
 table {
     border-collapse: collapse;
 }
@@ -21,25 +34,6 @@ table {
 ::-moz-focus-inner {
     border: 0;
 }
-
-body {
-    font: 14px sans-serif;
-    line-height: 1.22;
-}
-
-article,
-aside,
-details,
-footer,
-header,
-hgroup,
-mark,
-menu,
-nav,
-section {
-    display: block;
-}
-
 article {
     margin: 50px 0;
 }
@@ -194,9 +188,9 @@ small {
     color: #fff;
 }
 
-    .dark a {
-        color: #ceff00;
-    }
+.dark a {
+    color: #ceff00;
+}
 
 .light {
     background-color: #f9f9f9;
@@ -263,10 +257,10 @@ button {
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#ddd));
 }
 
-    button:active {
-        -moz-box-shadow: 0 0 3px #06f;
-        -webkit-box-shadow: 0 0 3px #06f;
-    }
+button:active {
+    -moz-box-shadow: 0 0 3px #06f;
+    -webkit-box-shadow: 0 0 3px #06f;
+}
 
 .code figcaption {
     float: right;
@@ -345,7 +339,7 @@ button {
 .sh,
 .si,
 .sx,
-s1 {
+.s1 {
     color: #d14;
 }
 
@@ -428,10 +422,10 @@ s1 {
     background-color: #fdd;
 }
 
-    .gd .x {
-        color: #000;
-        background-color: #faa;
-    }
+.gd .x {
+    color: #000;
+    background-color: #faa;
+}
 
 .ge {
     font-style: italic;
@@ -450,10 +444,10 @@ s1 {
     background-color: #dfd;
 }
 
-    .gi .x {
-        color: #000;
-        background-color: #afa;
-    }
+.gi .x {
+    color: #000;
+    background-color: #afa;
+}
 
 .go {
     color: #888;
@@ -473,17 +467,6 @@ s1 {
 
 .gt {
     color: #a00;
-}
-
-html {
-    background-color: #f9f9f9;
-}
-
-body {
-    margin: 50px auto;
-    width: 982px;
-    color: #333;
-    font: 13px sans-serif;
 }
 
 #fork {
@@ -516,21 +499,21 @@ body {
     margin: -10px 0 10px;
 }
 
-    #hero h1,
-    #hero h2,
-    #hero h3 {
-        visibility: hidden;
-    }
+#hero h1,
+#hero h2,
+#hero h3 {
+    visibility: hidden;
+}
 
-    #hero p {
-        color: #c8c8c8;
-        font-size: 11px;
-        margin: 20px 36px 0 322px;
-    }
+#hero p {
+    color: #c8c8c8;
+    font-size: 11px;
+    margin: 20px 36px 0 322px;
+}
 
-    #hero a {
-        color: #777;
-    }
+#hero a {
+    color: #777;
+}
 
 nav,
 footer {
@@ -538,25 +521,25 @@ footer {
     text-align: center;
 }
 
-    nav a,
-    footer a {
-        color: #777;
-        font-size: 11px;
-        margin: 0 5px;
-    }
+nav a,
+footer a {
+    color: #777;
+    font-size: 11px;
+    margin: 0 5px;
+}
 
 #content {
     background-color: #fff;
 }
 
-    #content h1 {
-        float: left;
-        width: 180px;
-        font-weight: normal;
-        margin: 5px 0 0 25px;
-        font-size: 24px;
-        color: #777;
-    }
+#content h1 {
+    float: left;
+    width: 180px;
+    font-weight: normal;
+    margin: 5px 0 0 25px;
+    font-size: 24px;
+    color: #777;
+}
 
 section {
     float: left;
@@ -597,9 +580,9 @@ a {
     color: #458;
 }
 
-    a:hover {
-        text-decoration: underline;
-    }
+a:hover {
+    text-decoration: underline;
+}
 
 li code,
 li a {
