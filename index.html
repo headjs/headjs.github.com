@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="media/css/style.min.css?v=0.3">
     <link rel="icon" type="image/gif" href="media/img/favicon.gif?v=1">
     
-    <script src="https://raw.github.com/headjs/headjs/master/dist/head.min.js"></script>
+    <script src="media/libs/headjs/head.min.js"></script>
 </head>
 <body>
     <a href="http://github.com/headjs/headjs">
@@ -81,7 +81,7 @@
                      
 
                 <article>
-                    <h2>Responsive Design / Mobile First</h2>
+                    <h2>Responsive Design / Media Queries</h2>
                     <p>
                         Design pages for <strong>1980px</strong> wide screen and make it also work on <strong>10&#8221;</strong>
                         laptops and mobile phones. Viewport is the most important thing when
@@ -97,6 +97,11 @@
                     <p>
                         If you resize the browser window your <span class="caps">CSS</span> rules will dynamically follow. Head
                         <span class="caps">JS</span> does it behind the&nbsp;scenes.
+                    </p>
+                    
+                    <h3>Look at it like Media Queries, except that it works in browsers that don't even support Media Queries.</h3>
+                    <p>
+                        <em>HeadJS provides you with the following detections: <strong>.lt, .gt, .lte, .gte, .eq</strong></em>
                     </p>
                 </article>
                 
@@ -201,8 +206,8 @@
                     page rendering process. The page is ready sooner. Always. This is guaranteed
                     even with a single combined JavaScript file. See it&nbsp;yourself:
                 </p>
-                <p><a href="test/script.html">Sample page with 5 <span class="caps">SCRIPT</span> <span class="caps">SRC</span>&nbsp;tags</a></p>
-                <p><a href="test/headjs.html">Same scripts loaded with Head&nbsp;<span class="caps">JS</span></a></p>
+                <p><a href="test/script.html" target="_blank">Sample page with 5 <span class="caps">SCRIPT</span> <span class="caps">SRC</span>&nbsp;tags</a></p>
+                <p><a href="test/headjs.html" target="_blank">Same scripts loaded with Head&nbsp;<span class="caps">JS</span></a></p>
                 <p>
                     Non-blocking loading is the key to fast pages. Moreover Head <span class="caps">JS</span> loads scripts
                     in <em>parallel</em> no matter how many of them and what the browser is. The speed
@@ -436,7 +441,7 @@
                 
 
                 <article>
-                    <h2>Responsive Design / Mobile First</h2>
+                    <h2>Responsive Design / Media Queries</h2>
                     <p>
                         Target <span class="caps">CSS</span> for various screen sizes. For example
                         <figure class="code">
@@ -473,6 +478,27 @@
                         </figure>
                     </p>
                     <p>If you resize the browser window your <span class="caps">CSS</span> rules will be dynamically&nbsp;applied.</p>
+                    
+                    <h3>
+                        <strong>You can also specify what type of detections you want to use:</strong>
+                    </h3>
+                    <p>
+                        <figure class="code">
+                            <div class="highlight">
+                                <pre>
+var head_conf = screensCss: {
+                                "gt" : true,
+                                "gte": false,
+                                "lt" : true,
+                                "lte": false,
+                                "eq" : false
+};
+</pre>
+                            </div>
+                            <br />
+                            <figcaption>JavaScript</figcaption>
+                        </figure>
+                    </p>
                 </article>
                 
                 <article>
@@ -563,9 +589,8 @@
                         </figure>
                     </p>
                     <p>
-                        <a href="https://github.com/Modernizr/Modernizr/blob/master/modernizr.js">Modernizr</a>
-                        is a good source of tests. It&#8217;s preferred to append the tests inside
-                        <code>head.min.js</code> file.
+                        <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">Modernizr</a>
+                        is an excellent source of tests.
                     </p>
                 </article>                                 
                            
@@ -737,7 +762,7 @@
 
             <h1>Download</h1>
             <section id="download">
-                <h2>Version&nbsp;0.98</h2>
+                <h2>Version 0.98</h2>
                 <table>
                     <tr>
                         <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.min.js">head.min.js</a></td>
@@ -758,8 +783,13 @@
                 </table>
 
                 <p>
-                    <strong><a href="https://github.com/headjs/headjs/blob/master/changelog.txt">Release&nbsp;notes</a></strong>
+                    <strong><a href="https://github.com/headjs/headjs/blob/master/changelog.txt">Release notes</a></strong>
                 </p>
+                <p>
+                    <strong><a href="test/unit/index.html" target="_blank">Unit Tests</a></strong>
+                </p>
+                
+
                 <h4>Spread the word</h4>
                 <p>                                       
                     <script type="IN/Share"></script>                        
@@ -775,7 +805,7 @@
                 </p>
                 <h2>Future</h2>
                 <p>
-                    Head <span class="caps">JS</span> is rapidly being adopted to large number of websites all the time. A
+                    Head <span class="caps">JS</span> is rapidly being adopted by a large number of websites all the time. A
                     quick <a href="http://twitter.com/search?q=headjs">Twitter search</a> reveals that it&#8217;s
                     becoming a core client side development tool for many. The strategy is to keep Head <span class="caps">JS</span>
                     as minimalistic as possible.
