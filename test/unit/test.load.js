@@ -13,19 +13,6 @@ function getStyle(ele, styleProp) {
     return y;
 }
 
-asyncTest("css (load)", function () {
-    expect(1);
-  
-    head.ready("test.css", function () {     
-        var result = getStyle(document.getElementById("browserscope"), "display");
-        ok(result === "block", "Filename: ready('test.css')");
-
-        start();
-    });
-   
-    head.js("assets/test.css");
-});
-
 asyncTest("jquery, mootools (trigger via callback)", function() {
     expect(2);
     
@@ -60,34 +47,47 @@ asyncTest("jquery (trigger via filename)", function () {
 
 
 asyncTest('jshint, jquery, knockout (trigger via label)', function () {
-    expect(4);
-    var key = "123";
+    expect(6);
+
     head.js(
         { jshint  : "http://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js" },
         { jquery  : "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" },
         { knockout: "http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js" }
     );
 
-    head.ready("jshint", function () {
-        key += "1";
-        
+    head.ready("jshint", function () {               
         ok(!!JSHINT, "Label: ready('jshint')");
+        QUnit.step(1, "step1 jshint");
         
         start();
     });
     
     head.ready("jquery", function () {
-        key += "2";
         ok(!!jQuery, "Label: ready('jquery')");
+        QUnit.step(2, "step2 jquery");
         
         start();
     });
     
     head.ready("knockout", function () {
-        key += "3";
         ok(!!ko, "Label: ready('knockout')");
-        ok(key = "123", "Load order");
+        QUnit.step(3, "step3 knockout");
         
         start();
     });       
+});
+
+
+// INFO: will make had fail (and nothing else continues!) if file not exists
+asyncTest("css (load)", function () {
+    expect(1);
+
+    head.ready("test.css", function () {
+        var result = getStyle(document.getElementById("browserscope"), "display");
+        ok(result === "block", "Filename: ready('test.css')");
+
+        start();
+    });
+
+    head.js("assets/test.css");
 });

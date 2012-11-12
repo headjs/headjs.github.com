@@ -19,13 +19,19 @@
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-20001309-1']);
         _gaq.push(['_trackPageview']);
+        
         _gaq.push(['b._setAccount', 'UA-15567888-4']);
         _gaq.push(['b._trackPageview']);
+        
+        function trackPageView(page) {
+            _gaq.push(['_trackPageview'  , page]);
+            _gaq.push(['b._trackPageview', page]);
+        }
     </script>
     <script src="media/libs/headjs/head.min.js"></script>
 </head>
 <body>
-    <a href="http://github.com/headjs/headjs">
+    <a href="http://github.com/headjs/headjs" onclick="trackPageView('github.com')">
         <img id="fork" alt="Fork me on GitHub" src="media/img/forkme.png">
     </a>    
     <div id="wrap">
@@ -235,8 +241,8 @@
                     page rendering process. The page is ready sooner. Always. This is guaranteed
                     even with a single combined JavaScript file. See it&nbsp;yourself:
                 </p>
-                <p><a href="test/script.html" target="_blank">Sample page with 5 <span class="caps">SCRIPT</span> <span class="caps">SRC</span>&nbsp;tags</a></p>
-                <p><a href="test/headjs.html" target="_blank">Same scripts loaded with Head&nbsp;<span class="caps">JS</span></a></p>
+                <p><a href="test/script.html" target="_blank" onclick="trackPageView('test/script.html')">Sample page with 5 <span class="caps">SCRIPT</span> <span class="caps">SRC</span>&nbsp;tags</a></p>
+                <p><a href="test/headjs.html" target="_blank" onclick="trackPageView('test/headjs.html')">Same scripts loaded with Head&nbsp;<span class="caps">JS</span></a></p>
                 <p>
                     Non-blocking loading is the key to fast pages. Moreover Head <span class="caps">JS</span> loads scripts
                     in <em>parallel</em> no matter how many of them and what the browser is. The speed
@@ -794,22 +800,22 @@ var head_conf = screensCss: {
                 <h2>Version 0.98</h2>
                 <table>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.min.js" target="_blank" onclick="_gaq.push(['b._trackPageview', 'download/head.min.js']);">head.min.js</a></td>
+                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.min.js" target="_blank" onclick="trackPageView('download/head.min.js')">head.min.js</a></td>
                         <td>Full Bundle</td>
                         <td><small><em><strong>4.1K</strong> (minified &amp; gzipped)</em></small></td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.core.min.js" target="_blank" onclick="_gaq.push(['b._trackPageview', 'download/head.core.min.js']);">head.core.min.js</a></td>
+                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.core.min.js" target="_blank" onclick="trackPageView('download/head.core.min.js')">head.core.min.js</a></td>
                         <td>Responsive Design & Feature Detection Only</td>
                         <td><small><em><strong>1.8K</strong> (minified &amp; gzipped)</em></small></td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.load.min.js" target="_blank" onclick="_gaq.push(['b._trackPageview', 'download/head.load.min.js']);">head.load.min.js</a></td>
+                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.load.min.js" target="_blank" onclick="trackPageView('download/head.load.min.js')">head.load.min.js</a></td>
                         <td>JavaScript Loader Only</td>
                         <td><small><em><strong>1.9K</strong> (minified &amp; gzipped)</em></small></td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs" onclick="_gaq.push(['b._trackPageview', 'github.com']);">Github Repository</a></td>
+                        <td><a href="https://github.com/headjs/headjs" onclick="trackPageView('github.com')">Github Repository</a></td>
                         <td colspan="2">Source Code</td>
                     </tr>
                 </table>
@@ -818,7 +824,7 @@ var head_conf = screensCss: {
                     <strong>* <a href="https://github.com/headjs/headjs/blob/master/changelog.txt">Release notes</a></strong>
                 </p>            
                 <p>         
-                    <strong><em><a href="test/unit/index.html" target="_blank">Unit Tests / BrowserScope Results</a></em></strong>
+                    <strong><em><a href="test/unit/index.html" target="_blank" onclick="trackPageView('test/unit')">Unit Tests / BrowserScope Results</a></em></strong>
                 </p>
                           
                 <h4>Spread the word</h4>
