@@ -36,7 +36,7 @@
 		
 		<script>
 			QUnit.testDone(function( details ) {
-				var key   = (details.module + '_' + details.name)..replace(/[^A-Za-z]/gi, "_").toLowerCase();
+				var key   = (details.module + '_' + details.name).replace(/[^A-Za-z]/gi, "_").toLowerCase();
 				var value = (details.total - details.failed);
 
 				_bTestResults[testName] = testsPassed;
