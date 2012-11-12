@@ -9,7 +9,7 @@
         
         <!-- HeadJS -->
         <script>
-    		// BrowserScope Results
+			// BrowserScope Results
 			var _bTestResults = {};           
         </script>
         <script type="text/javascript" src="../../media/libs/headjs/head.min.js"></script>
@@ -36,8 +36,20 @@
 		
 		<script>
 			QUnit.testDone(function( details ) {
-				if (window.console)
-					console.log( "Finished running: ", details.module, details.name, "Failed/total: ", details.failed, details.total );
+				var key   = (details.module + '_' + details.name)..replace(/[^A-Za-z]/gi, "_").toLowerCase();
+				var value = (details.total - details.failed);
+
+				_bTestResults[testName] = testsPassed;
+				
+				if (window.console)					
+					console.log(key, value);
+			});
+			QUnit.done(function( details ) {
+				//head.load("", function() {
+				
+				//});
+				// send results to browserscope
+				console.log( "Total: ", details.total, " Failed: ", details.failed, " Passed: ", details.passed, " Runtime: ", details.runtime );
 			});
 		</script>		
     </body>
