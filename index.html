@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="media/css/style.min.css?v=0.3">
     <link rel="icon" type="image/gif" href="media/img/favicon.gif?v=1">
     
+    <script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-20001309-1']);
+        _gaq.push(['_trackPageview']);
+        _gaq.push(['b._setAccount', 'UA-15567888-4']);
+        _gaq.push(['b._trackPageview']);
+    </script>
     <script src="media/libs/headjs/head.min.js"></script>
 </head>
 <body>
@@ -768,19 +775,19 @@ var head_conf = screensCss: {
                 <h2>Version 0.98</h2>
                 <table>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.min.js">head.min.js</a></td>
+                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.min.js" target="_blank" onclick="_gaq.push(['b._trackPageview', 'download/head.min.js']);">head.min.js</a></td>
                         <td>Full Bundle</td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.load.min.js">head.core.min.js</a></td>
+                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.load.min.js" target="_blank" onclick="_gaq.push(['b._trackPageview', 'download/head.core.min.js']);">head.core.min.js</a></td>
                         <td>Responsive Design & Feature Detection Only</td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.core.min.js">head.load.min.js</a></td>
+                        <td><a href="https://github.com/headjs/headjs/raw/v0.98/dist/head.core.min.js" target="_blank" onclick="_gaq.push(['b._trackPageview', 'download/head.load.min.js']);">head.load.min.js</a></td>
                         <td>JavaScript Loader Only</td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/headjs/headjs">Github Repository</a></td>
+                        <td><a href="https://github.com/headjs/headjs" onclick="_gaq.push(['b._trackPageview', 'github.com']);">Github Repository</a></td>
                         <td>Source Code</td>
                     </tr>
                 </table>
@@ -824,14 +831,7 @@ var head_conf = screensCss: {
         <a href="https://github.com/headjs/headjs/issues">Report a bug</a>
     </footer>
     <script>
-        head.js("http://www.google-analytics.com/ga.js", "http://platform.linkedin.com/in.js", "http://platform.twitter.com/widgets.js", "https://apis.google.com/js/plusone.js", function () {
-            var tipiirai = _gat._getTracker("UA-20001309-1");
-            tipiirai._trackPageview();
-
-            // To get some insight for me too :)
-            var itechnology = _gat._getTracker("UA-15567888-4");
-            itechnology._trackPageview();
-        });
+        head.js("http://www.google-analytics.com/ga.js", "http://platform.linkedin.com/in.js", "http://platform.twitter.com/widgets.js", "https://apis.google.com/js/plusone.js");
     </script>
 </body>
 </html>
