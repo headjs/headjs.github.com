@@ -17,12 +17,12 @@ asyncTest("css (load)", function () {
     expect(1);
   
     head.ready("test.css", function () {     
-        var result = getStyle(document.getElementsByTagName("body")[0], "background-repeat");
-        ok(result === "repeat-x", "Filename: ready('test.css')");
+        var result = getStyle(document.getElementById("browserscope"), "display");
+        ok(result === "block", "Filename: ready('test.css')");
 
         start();
     });
-
+   
     head.js("assets/test.css");
 });
 

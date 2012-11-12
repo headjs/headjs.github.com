@@ -1,3 +1,6 @@
-﻿body {
-    background-repeat: repeat-x;
+﻿#browserscope {
+    display: block;
+}
+body {
+    background-color: #E6F4FB;
 }
