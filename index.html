@@ -66,7 +66,7 @@
                         </figure>
                     </p>
                     <p>
-                        Head <span class="caps">JS</span> loads JavaScript files like images without <em>blocking</em> the page. Your
+                        Head <span class="caps">JS</span> loads JavaScript files in parallel like images without <em>blocking</em> the page. Your
                         page will be faster. Even with a single combined file.
                     </p>
                 </article>
@@ -98,20 +98,39 @@
                         tablet, a laptop or even a mobile phone. Viewport is the single most important thing when developing for mobile clients.
                         <figure class="code">
                             <div class="highlight">
-                                <pre><span class="c">/<em> screen size less than 1024 pixels </em>/</span><br /><span class="nc">.lt-1024</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="k">medium</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/<em> fine tune for mobile phone </em>/</span><br /><span class="nc">.lt-640</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="n">small</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /></pre>
+                                <pre><span class="c">/*<em> screen size less than 1024 pixels </em>*/</span><br /><span class="nc">.lt-1024</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="k">medium</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /><br /><span class="c">/*<em> fine tune for mobile phone </em>*/</span><br /><span class="nc">.lt-640</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="n">small</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /></pre>
                             </div>
                             <br />
                             <figcaption><span class="caps">CSS</span></figcaption>
                         </figure>
                     </p>
                     <p>
-                        If you resize the browser window your <span class="caps">CSS</span> rules will dynamically follow. Head
-                        <span class="caps">JS</span> does it behind the&nbsp;scenes.
+                        Or you migh need to apply a different layout when a page passes from <strong>Landscape</strong> to <strong>Portrait</strong> mode.
+                        <p>Landscape</p>
+                        <figure class="code">
+                            <div class="highlight">
+                                <pre><span class="c">/*<em> page in lanscape mode </em>*/</span><br /><span class="nc">.landscape</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span><span class="p">800px;</span> <span class="p">}</span><br /></pre>
+                            </div>
+                            <br />
+                            <figcaption><span class="caps">CSS</span></figcaption>
+                        </figure>
+                        <p>Portrait</p>
+                        <figure class="code">
+                            <div class="highlight">
+                                <pre><span class="c">/*<em> page in portrait mode </em>*/</span><br /><span class="nc">.portrait</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span><span class="p">300px;</span> <span class="p">}</span><br /></pre>
+                            </div>
+                            <br />
+                            <figcaption><span class="caps">CSS</span></figcaption>
+                        </figure>
+                    </p>
+                    <p>
+                        If you resize the browser your <span class="caps">CSS</span> rules will dynamically follow. Head
+                        <span class="caps">JS</span> does this behind the&nbsp;scenes.
                     </p>
                     
                     <h3>Look at it like Media Queries, except that it works in browsers that don't even support Media Queries.</h3>
                     <p>
-                        <em>Head JS provides you with the following detections: <strong>.lt, .gt, .lte, .gte, .eq</strong></em>
+                        <em>Head JS provides you with the following detections: <strong>.lt, .gt, .lte, .gte, .eq, .landscape, .portrait, .desktop, .mobile</strong></em>
                     </p>
                 </article>
                 
