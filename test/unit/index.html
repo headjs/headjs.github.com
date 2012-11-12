@@ -9,7 +9,8 @@
         
         <!-- HeadJS -->
         <script>
-           // var head_conf = { screens: [100, 200, 2000], section: '-area', page: '-page' };            
+    		// BrowserScope Results
+			var _bTestResults = {};           
         </script>
         <script type="text/javascript" src="../../media/libs/headjs/head.min.js"></script>
         
@@ -31,5 +32,13 @@
         <script src="test.responsive.js"></script>
         <script src="test.feature.js"></script> 
         <script src="test.load.js"></script>
+		
+		
+		<script>
+			QUnit.testDone(function( details ) {
+				if (window.console)
+					console.log( "Finished running: ", details.module, details.name, "Failed/total: ", details.failed, details.total );
+			});
+		</script>		
     </body>
 </html>
