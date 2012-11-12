@@ -48,7 +48,8 @@
                 <article>
                     <h2>JavaScript Loader</h2>
                     <p>
-                        Load scripts in parallel but execute in order
+                        Load scripts in parallel but execute in order.
+                        <p>No WEB 2.0 site would work without all the nice scripts we are injecting into our pages today.</p>
                         <figure class="code">
                             <div class="highlight">
                                 <pre><span class="nx">head</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="s2">&quot;/path/to/jquery.js&quot;</span><span class="p">,</span> <span class="s2">&quot;/google/analytics.js&quot;</span><span class="p">,</span> <span class="s2">&quot;/js/site.js&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><br />&nbsp;<br />   <span class="c1">// all done</span><br />&nbsp;<br /><span class="p">});</span><br /></pre>
@@ -59,7 +60,7 @@
                     </p>
                     <p>
                         Head <span class="caps">JS</span> loads JavaScript files like images without <em>blocking</em> the page. Your
-                        page will be faster even with a single combined&nbsp;file.
+                        page will be faster. Even with a single combined file.
                     </p>
                 </article>
                 
@@ -83,9 +84,11 @@
                 <article>
                     <h2>Responsive Design / Media Queries</h2>
                     <p>
-                        Design pages for <strong>1980px</strong> wide screen and make it also work on <strong>10&#8221;</strong>
-                        laptops and mobile phones. Viewport is the most important thing when
-                        developing for mobile clients.
+                        You've heard of Responsive Design, Media Queries & Mobile First. But how do you actually go about and put it into application without having to resort to some kind of mobile framework ?
+                    </p>
+                    <p>
+                        Design your pages for <strong>1980px</strong> resolution, then make them work on a <strong>10&#8221;</strong>
+                        tablet, a laptop or even a mobile phone. Viewport is the single most important thing when developing for mobile clients.
                         <figure class="code">
                             <div class="highlight">
                                 <pre><span class="c">/<em> screen size less than 1024 pixels </em>/</span><br /><span class="nc">.lt-1024</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="k">medium</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br />&nbsp;<br /><span class="c">/<em> fine tune for mobile phone </em>/</span><br /><span class="nc">.lt-640</span> <span class="nf">#hero</span> <span class="p">{</span> <span class="k">background-image</span><span class="o">:</span><span class="p">(</span><span class="n">small</span><span class="o">.</span><span class="n">jpg</span><span class="p">);</span> <span class="p">}</span><br /></pre>
@@ -101,7 +104,7 @@
                     
                     <h3>Look at it like Media Queries, except that it works in browsers that don't even support Media Queries.</h3>
                     <p>
-                        <em>HeadJS provides you with the following detections: <strong>.lt, .gt, .lte, .gte, .eq</strong></em>
+                        <em>Head JS provides you with the following detections: <strong>.lt, .gt, .lte, .gte, .eq</strong></em>
                     </p>
                 </article>
                 
@@ -152,7 +155,7 @@
                 </article>
 
                 <article>
-                    <h2>CSS Feature Detection</h2>
+                    <h2>CSS3 Feature Detection</h2>
                     <p>
                         HeadJS adds classes to the <span class="caps">HTML</span> root element so that you can do this
                         <figure class="code">
@@ -544,7 +547,7 @@ var head_conf = screensCss: {
                 </article> 
                 
                 <article>
-                    <h2>CSS Feature Detection</h2>
+                    <h2>CSS3 Feature Detection</h2>
                     <p>
                         When a particular feature is supported a corresponding class name is added to
                         the <code>&lt;html&gt;</code> element. When a feature is not supported the class name is
