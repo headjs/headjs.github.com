@@ -13,12 +13,12 @@ function getStyle(ele, styleProp) {
     return y;
 }
 
-asyncTest("CSS: load css file", function () {
+asyncTest("css (load)", function () {
     expect(1);
   
     head.ready("test.css", function () {     
         var result = getStyle(document.getElementsByTagName("body")[0], "background-repeat");
-        ok(result === "repeat-x", "Ok, triggered on filename: head.ready('test.css')");
+        ok(result === "repeat-x", "Filename: ready('test.css')");
 
         start();
     });
@@ -26,7 +26,7 @@ asyncTest("CSS: load css file", function () {
     head.js("assets/test.css");
 });
 
-asyncTest("jQuery & MooTools: trigger via callback()", function() {
+asyncTest("jquery, mootools (trigger via callback)", function() {
     expect(2);
     
     head.js(
@@ -37,19 +37,19 @@ asyncTest("jQuery & MooTools: trigger via callback()", function() {
         function() {                        
             $j = jQuery.noConflict();
                         
-            ok(!!$j("#qunit-header").addClass, "jQuery ok, using noConflict()");
-            ok(!!$$("#qunit-header").addClass, "Mootools ok");
+            ok(!!$j("#qunit-header").addClass, "Callback: jQuery");
+            ok(!!$$("#qunit-header").addClass, "Callback: Mootools");
             
             start();
         }
     );
 });
 
-asyncTest("jQuery: trigger via filename", function () {
+asyncTest("jquery (trigger via filename)", function () {
     expect(1);
     
     head.ready("jquery.min.js", function() {        
-        ok(!!jQuery, "Ok, triggered on filename: head.ready('jquery.min.js')");
+        ok(!!jQuery, "Filename: ready('jquery.min.js')");
         
         start();
     });
@@ -59,7 +59,7 @@ asyncTest("jQuery: trigger via filename", function () {
 });
 
 
-asyncTest('jshint, jquery, knockout: trigger via labels', function () {
+asyncTest('jshint, jquery, knockout (trigger via label)', function () {
     expect(4);
     var key = "123";
     head.js(
@@ -71,22 +71,22 @@ asyncTest('jshint, jquery, knockout: trigger via labels', function () {
     head.ready("jshint", function () {
         key += "1";
         
-        ok(!!JSHINT, "Ok, triggered on label: head.ready('jshint')");
+        ok(!!JSHINT, "Label: ready('jshint')");
         
         start();
     });
     
     head.ready("jquery", function () {
         key += "2";
-        ok(!!jQuery, "Ok, triggered on label: head.ready('jquery')");
+        ok(!!jQuery, "Label: ready('jquery')");
         
         start();
     });
     
     head.ready("knockout", function () {
         key += "3";
-        ok(!!ko, "Ok, triggered on label: head.ready('knockout')");
-        ok(key = "123", "Scripts where executed in correct order");
+        ok(!!ko, "Label: ready('knockout')");
+        ok(key = "123", "Load order");
         
         start();
     });       
