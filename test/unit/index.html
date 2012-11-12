@@ -39,7 +39,7 @@
 				var key   = (details.module + '_' + details.name).replace(/[^A-Za-z]/gi, "_").toLowerCase();
 				var value = (details.total - details.failed);
 
-				_bTestResults[testName] = testsPassed;
+				_bTestResults[key] = value;
 				
 				if (window.console)					
 					console.log(key, value);
