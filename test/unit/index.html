@@ -31,19 +31,6 @@
         <!-- Tests -->
         <script src="test.responsive.js"></script>
         <script src="test.feature.js"></script> 
-        <script src="test.load.js"></script>
-		
-		
-		<script>
-			QUnit.testDone(function( details ) {
-				var key   = (details.module + '_' + details.name).replace(/[^A-Za-z]/gi, "_").toLowerCase();
-				var value = (details.total - details.failed);
-
-				_bTestResults[key] = value;
-				
-				if (window.console)					
-					console.log(key, value);
-			});
-		</script>		
+        <script src="test.load.js"></script>		
     </body>
 </html>
