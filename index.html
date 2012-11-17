@@ -2,17 +2,25 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="google-site-verification" content="pqzn85yrum0AY6ugIrX0zoIEazSHL9p09us5yvHwZqw" />
     <title>HeadJS, the only script in your &lt;head&gt;</title>
 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="pqzn85yrum0AY6ugIrX0zoIEazSHL9p09us5yvHwZqw" />
+        
     <meta name="description" content="Load scripts and stylesheets on demand. Achieve responsive design with CSS that targets different screen resolutions, paths, states and browsers. Detect various browsers and their features. Target HTML5 and CSS3 safely." />
-    <meta name="author" content="Tero Piirainen">
+    <meta name="author" content="Tero Piirainen" />
+    
+	<meta property="og:title" content="HeadJS, The only script in your &lt;HEAD&gt;"/>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://headjs.com" />
+	<meta property="og:image" content="http://headjs.com/media/img/logo-small.jpg" />
+	<meta property="og:site_name" content="Head JS" />
+	<meta property="og:description" content="Load scripts and stylesheets on demand. Achieve responsive design with CSS that targets different screen resolutions, paths, states and browsers. Detect various browsers and their features. Target HTML5 and CSS3 safely." />
     
     <!-- include the stylesheet after headjs -->    
     <link rel="stylesheet" type="text/css" href="media/css/html5.min.css" />
-    <link rel="stylesheet" href="media/css/style.min.css?v=0.3">
-    <link rel="icon" type="image/gif" href="media/img/favicon.gif?v=1">
+    <link rel="stylesheet" href="media/css/style.min.css?v=0.3" />
+    <link rel="icon" type="image/gif" href="media/img/favicon.gif?v=1" />
     
     <script>
         var _gaq = _gaq || [];
@@ -37,11 +45,11 @@
         <nav>
             <a href="#highlights">highlights</a> &bull;<a href="#theory">theory</a> &bull;<a href="#usage">usage</a> &bull;<a href="#api">api</a> &bull;<a href="#download">download <strong>(v 0.99)</strong></a>
         </nav>
-        <div id="hero">
-            <h1>HEAD<em>JS</em></h1>
+        <div id="hero" itemscope="itemscope" itemtype="http://schema.org/Product">
+            <h1 itemprop="name">HEAD<em>JS</em></h1>
             <h2>The only script in your &lt;HEAD&gt;</h2>
             <h3>A tiny script that simplifies, speeds up, and modernizes your site</h3>
-            <p>
+            <p itemprop="description">
                 Load scripts and stylesheets on demand.
                 Achieve responsive design with CSS that targets different screen resolutions, paths, states and browsers.
                 Detect various browsers and their features.
@@ -865,12 +873,17 @@ var head_conf = screensCss: {
             </section>
         </div>
     </div>
-    <footer>
-        <a href="http://cloudpanic.com/about.html" target="_blank">Created By: <strong>Tero Piirainen</strong></a> &bull;
+    <footer>        
+        <span itemscope="itemscope" itemtype="http://schema.org/Person">
+            <a href="http://cloudpanic.com/about.html" target="_blank" itemprop="url">Created By: <strong itemprop="name">Tero Piirainen</strong></a> &bull;
+        </span>
+        <span itemscope="itemscope" itemtype="http://schema.org/Person">
+            <a href="http://careers.stackoverflow.com/roberthoffmann" target="_blank" itemprop="url">Maintained By: <strong itemprop="name">Robert Hoffmann</strong></a> &bull;
+        </span>
         <a href="http://twitter.com/search?q=headjs" target="_blank">Twitter Talk</a> &bull;
-        <a href="http://headjs.uservoice.com" target="_blank">Vote for & discuss features</a> &bull;
-        <a href="http://stackoverflow.com/questions/tagged/head.js?sort=newest" target="_blank">Ask questions & find answers</a> &bull;
-        <a href="https://github.com/headjs/headjs/issues">Report a bug</a>
+        <a href="http://headjs.uservoice.com" target="_blank">Feature Requests</a> &bull;
+        <a href="http://stackoverflow.com/questions/tagged/head.js?sort=newest" target="_blank">Community Support</a> &bull;
+        <a href="https://github.com/headjs/headjs/issues">Bug Reports</a>
     </footer>
     <script>
         head.js("http://www.google-analytics.com/ga.js", "http://platform.linkedin.com/in.js", "http://platform.twitter.com/widgets.js", "https://apis.google.com/js/plusone.js");
